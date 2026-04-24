@@ -282,6 +282,17 @@ body { font-family: var(--sans); background: var(--off-white); color: var(--text
 .matrix-table td small {
   display: block; font-size: 12px; color: var(--muted); font-weight: 300; margin-top: 3px;
 }
+.matrix-group th {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pink);
+  text-align: left;
+  padding: 28px 0 12px;
+  border-bottom: none;
+  border-top: 2px solid var(--rule);
+}
 .dot-yes {
   width: 20px; height: 20px; border-radius: 50%;
   background: var(--green); display: inline-block; opacity: 0.85;
@@ -537,69 +548,97 @@ footer {
   <h2 class="sr sr-d1">Capabilities across<br><em>every organizational role.</em></h2>
 
   <table class="matrix-table">
+    <colgroup>
+      <col style="width:42%">
+      <col style="width:19.333%">
+      <col style="width:19.333%">
+      <col style="width:19.333%">
+    </colgroup>
     <thead>
       <tr>
-        <th style="width:42%">Capability</th>
+        <th>Capability</th>
         <th>Foundations</th>
         <th>Nonprofits</th>
         <th>Networks</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td colspan="4" style="padding:0"><table style="width:100%">
-        <tr><th colspan="4" style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);padding:28px 0 12px;border-bottom:none">Collection</th></tr>
-        <tr>
-          <td>Link and QR code delivery<small>Share with any community member</small></td>
-          <td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td>
-        </tr>
-        <tr>
-          <td>Multilingual collection<small>Most languages supported</small></td>
-          <td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td>
-        </tr>
-        <tr>
-          <td>Anonymous by default</td>
-          <td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td>
-        </tr>
-        <tr><th colspan="4" style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);padding:28px 0 12px;border-bottom:none">Analysis</th></tr>
-        <tr>
-          <td>Real-time theme identification</td>
-          <td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td>
-        </tr>
-        <tr>
-          <td>Demographic and geographic filtering</td>
-          <td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td>
-        </tr>
-        <tr>
-          <td>One-click report generation</td>
-          <td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td>
-        </tr>
-        <tr><th colspan="4" style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);padding:28px 0 12px;border-bottom:none">Partner Sharing</th></tr>
-        <tr>
-          <td>Multi-organization story pooling</td>
-          <td><span class="dot-yes"></span></td><td><span class="dot-partial"></span></td><td><span class="dot-yes"></span></td>
-        </tr>
-        <tr>
-          <td>Grantee and partner management</td>
-          <td><span class="dot-yes"></span></td><td><span class="dot-partial"></span></td><td><span class="dot-yes"></span></td>
-        </tr>
-        <tr>
-          <td>Cross-chapter aggregation</td>
-          <td><span class="dot-partial"></span></td><td><span class="dot-partial"></span></td><td><span class="dot-yes"></span></td>
-        </tr>
-        <tr><th colspan="4" style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--pink);padding:28px 0 12px;border-bottom:none">Community Panels (optional add-on)</th></tr>
-        <tr>
-          <td>Targeted panel recruitment</td>
-          <td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td>
-        </tr>
-        <tr>
-          <td>Asynchronous panel dialogue</td>
-          <td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td>
-        </tr>
-        <tr>
-          <td>Participant compensation management</td>
-          <td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td><td><span class="dot-yes"></span></td>
-        </tr>
-      </table></td>
+      <tr class="matrix-group"><th colspan="4">Collection</th></tr>
+      <tr>
+        <td>Link and QR code delivery<small>Share with any community member</small></td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+      </tr>
+      <tr>
+        <td>Multilingual collection<small>Most languages supported</small></td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+      </tr>
+      <tr>
+        <td>Anonymous by default</td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+      </tr>
+      <tr class="matrix-group"><th colspan="4">Analysis</th></tr>
+      <tr>
+        <td>Real-time theme identification</td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+      </tr>
+      <tr>
+        <td>Demographic and geographic filtering</td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+      </tr>
+      <tr>
+        <td>One-click report generation</td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+      </tr>
+      <tr class="matrix-group"><th colspan="4">Partner Sharing</th></tr>
+      <tr>
+        <td>Multi-organization story pooling</td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-partial"></span></td>
+        <td><span class="dot-yes"></span></td>
+      </tr>
+      <tr>
+        <td>Grantee and partner management</td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-partial"></span></td>
+        <td><span class="dot-yes"></span></td>
+      </tr>
+      <tr>
+        <td>Cross-chapter aggregation</td>
+        <td><span class="dot-partial"></span></td>
+        <td><span class="dot-partial"></span></td>
+        <td><span class="dot-yes"></span></td>
+      </tr>
+      <tr class="matrix-group"><th colspan="4">Community Panels (optional add-on)</th></tr>
+      <tr>
+        <td>Targeted panel recruitment</td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+      </tr>
+      <tr>
+        <td>Asynchronous panel dialogue</td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+      </tr>
+      <tr>
+        <td>Participant compensation management</td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+        <td><span class="dot-yes"></span></td>
+      </tr>
     </tbody>
   </table>
   <p style="font-size:12px;color:var(--muted);margin-top:20px;">Filled circle = included. Ring = available with configuration. All plans scoped through a direct conversation. Pricing available on request.</p>
