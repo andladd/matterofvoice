@@ -244,6 +244,25 @@ nav {
   border-top: 1px solid var(--rule);
 }
 
+
+/* ── NAV TOGGLE (HAMBURGER) ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle span {
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  display: block;
+}
+
 .label {
   font-size: 11px;
   font-weight: 600;
@@ -544,6 +563,29 @@ footer {
 
 /* ── MOBILE ── */
 @media (max-width: 860px) {
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav .nav-links {
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: var(--off-white);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 6%;
+    gap: 16px;
+    border-bottom: 1px solid var(--rule);
+    display: none;
+  }
+
+  .site-nav.open .nav-links {
+    display: flex;
+  }
+
   .hero { grid-template-columns: 1fr; }
   .hero-left { border-right: none; padding: 60px 6%; }
   .hero-right { height: 360px; }
@@ -559,17 +601,21 @@ footer {
   .audiences-grid { grid-template-columns: 1fr; }
   .cta-wrap { grid-template-columns: 1fr; gap: 48px; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
-  nav .nav-links { display: none; }
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
+<nav class="site-nav">
   <a href="index.html" class="nav-logo">
     <img src="https://images.squarespace-cdn.com/content/v1/68e698bf75ec1f7f1c7230de/c4e6c8c4-4027-4557-9e95-827803ef03b3/Matter_of_Voice_logo_SCREEN.png?format=1000w" alt="Matter of Voice">
   </a>
+  <button class="nav-toggle" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
   <ul class="nav-links">
     <li><a href="platform.html">Platform</a></li>
     <li><a href="security.html">Security</a></li>
@@ -817,6 +863,23 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
 document.querySelectorAll('.sr').forEach(el => obs.observe(el));
+
+
+/* NAV TOGGLE */
+const toggle = document.querySelector('.nav-toggle');
+const siteNav = document.querySelector('.site-nav');
+
+if (toggle && siteNav) {
+  toggle.addEventListener('click', () => {
+    siteNav.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      siteNav.classList.remove('open');
+    });
+  });
+}
 </script>
 </body>
 </html>

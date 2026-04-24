@@ -31,7 +31,7 @@ nav {
   height: 68px; display: flex; align-items: center;
   padding: 0 6%; justify-content: space-between;
 }
-.nav-logo img { height: 30px; display: block; }
+.nav-logo img { height: 50px; display: block; }
 .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
 .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover { color: var(--text); }
@@ -40,6 +40,23 @@ nav {
 .nav-cta:hover { opacity: 0.88; }
 
 .label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 20px; }
+
+/* ── NAV TOGGLE (HAMBURGER) ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  display: block;
+}
 
 /* PAGE HEADER */
 .page-header {
@@ -275,12 +292,30 @@ footer {
 .sr-d2 { transition-delay: 0.2s; }
 
 @media (max-width: 860px) {
-  .page-header-inner { grid-template-columns: 1fr; gap: 32px; }
-  .cap-grid, .cap-grid.reverse { grid-template-columns: 1fr; direction: ltr; }
-  .panels-inner { grid-template-columns: 1fr; gap: 48px; }
-  .cta-strip { flex-direction: column; align-items: flex-start; }
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
-  nav .nav-links { display: none; }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav .nav-links {
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: var(--off-white);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 6%;
+    gap: 16px;
+    border-bottom: 1px solid var(--rule);
+
+    display: none;
+  }
+
+  .site-nav.open .nav-links {
+    display: flex;
+  }
+
 }
 
 /* SCHEDULER PAGE */
@@ -365,10 +400,15 @@ footer {
 </head>
 <body>
 
-<nav>
+<nav class="site-nav">
   <a href="index.html" class="nav-logo">
     <img src="https://images.squarespace-cdn.com/content/v1/68e698bf75ec1f7f1c7230de/c4e6c8c4-4027-4557-9e95-827803ef03b3/Matter_of_Voice_logo_SCREEN.png?format=1000w" alt="Matter of Voice">
   </a>
+<button class="nav-toggle" aria-label="Open menu">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
   <ul class="nav-links">
     <li><a href="platform.html">Platform</a></li>
     <li><a href="security.html">Security</a></li>
@@ -446,6 +486,24 @@ const srObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
 document.querySelectorAll('.sr').forEach(el => srObs.observe(el));
+
+/* NAV TOGGLE */
+const toggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('.site-nav');
+
+if (toggle && nav) {
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('open');
+  });
+
+  /* CLOSE MENU ON LINK CLICK */
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+    });
+  });
+}
+
 </script>
 </body>
 </html>
