@@ -389,13 +389,92 @@ h2 em {
 .screen-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ── TESTIMONIALS ── */
-.quote-wrap {
-  padding: 96px 6%;
+.quote-section {
+  background: #e8e7e3;
+  padding: 64px 6%;
   border-top: 1px solid var(--rule);
+}
+.quote-section-header {
+  margin-bottom: 28px;
+}
+.quote-section-header .label {
+  margin-bottom: 0;
+}
+.quote-wrap {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1px;
   background: var(--rule);
+  border-radius: 6px 6px 0 0;
+  overflow: hidden;
+}
+.quote-block {
+  background: var(--off-white);
+}
+
+/* ── HEADLINE SCROLL ── */
+.headline-scroll {
+  background: var(--navy);
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  border-radius: 0 0 6px 6px;
+}
+.headline-scroll::before,
+.headline-scroll::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+.headline-scroll::before {
+  left: 0;
+  background: linear-gradient(to right, var(--navy), rgba(51,51,101,0));
+}
+.headline-scroll::after {
+  right: 0;
+  background: linear-gradient(to left, var(--navy), rgba(51,51,101,0));
+}
+.headline-track {
+  display: flex;
+  gap: 0;
+  animation: ticker 28s linear infinite;
+  white-space: nowrap;
+  will-change: transform;
+}
+.headline-track:hover { animation-play-state: paused; }
+.headline-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+.headline-item a {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  padding: 0 28px;
+  transition: color 0.2s;
+}
+.headline-item a:hover { color: #fff; }
+.headline-sep {
+  color: var(--pink);
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0.7;
+  padding: 0 4px;
+}
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 .quote-block {
   background: var(--off-white);
@@ -416,6 +495,7 @@ h2 em {
 .quote-role {
   font-size: 13px; color: var(--muted);
 }
+
 
 /* ── AUDIENCES ── */
 .audiences-wrap {
@@ -598,6 +678,8 @@ footer {
   .screen-side { flex-direction: row; }
   .quote-wrap { grid-template-columns: 1fr; gap: 1px; }
   .quote-block { padding: 40px 36px; }
+  .quote-section { padding: 48px 6%; }
+  .quote-section-header { padding: 0; }
   .audiences-grid { grid-template-columns: 1fr; }
   .cta-wrap { grid-template-columns: 1fr; gap: 48px; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
@@ -740,20 +822,49 @@ footer {
 </div>
 
 <!-- TESTIMONIALS -->
-<div class="quote-wrap">
-  <div class="quote-block sr">
-    <blockquote>"Collecting neighbor stories will be easier and enable us to identify gaps in our service. I am most excited to be more accommodating to our neighbors' true, possibly unknown, needs."</blockquote>
-    <div class="quote-cite">
-      <span class="quote-role">Manager, Texas Food Bank</span>
+<div class="quote-section">
+  <div class="quote-section-header">
+    <span class="label">Partner Stories</span>
+  </div>
+  <div class="quote-wrap">
+    <div class="quote-block sr">
+      <blockquote>"Collecting neighbor stories will be easier and enable us to identify gaps in our service. I am most excited to be more accommodating to our neighbors' true, possibly unknown, needs."</blockquote>
+      <div class="quote-cite">
+        <span class="quote-role">Manager, Texas Food Bank</span>
+      </div>
+    </div>
+    <div class="quote-block sr sr-d1">
+      <blockquote>"Activating our coalition to collect and learn from voter experience stories has been essential to strengthening our collective impact. Our work will be stronger, more relevant, and more human-centered because of what we're learning now."</blockquote>
+      <div class="quote-cite">
+        <span class="quote-role">Coalition Lead, March Matters</span>
+      </div>
     </div>
   </div>
-  <div class="quote-block sr sr-d1" style="background:#fff;">
-    <blockquote>"Activating our coalition to collect and learn from voter experience stories has been essential to strengthening our collective impact. Our work will be stronger, more relevant, and more human-centered because of what we're learning now."</blockquote>
-    <div class="quote-cite">
-      <span class="quote-role">Coalition Lead, March Matters</span>
+
+  <!-- HEADLINE SCROLL -->
+  <div class="headline-scroll">
+    <div class="headline-track" id="headlineTrack">
+      <span class="headline-item">
+        <a href="https://www.marchmatters.org/share-your-story" target="_blank" rel="noopener">Texas voters contribute voices to May Matters campaign</a>
+      </span>
+      <span class="headline-sep">◆</span>
+      <span class="headline-item">
+        <a href="https://www.linkedin.com/company/matter-of-voice/" target="_blank" rel="noopener">Read our latest thoughts on LinkedIn</a>
+      </span>
+      <span class="headline-sep">◆</span>
+      <!-- duplicate for seamless loop -->
+      <span class="headline-item">
+        <a href="https://www.marchmatters.org/share-your-story" target="_blank" rel="noopener">Texas voters contribute voices to May Matters campaign</a>
+      </span>
+      <span class="headline-sep">◆</span>
+      <span class="headline-item">
+        <a href="https://www.linkedin.com/company/matter-of-voice/" target="_blank" rel="noopener">Read our latest thoughts on LinkedIn</a>
+      </span>
+      <span class="headline-sep">◆</span>
     </div>
   </div>
 </div>
+
 
 <!-- AUDIENCES -->
 <div class="audiences-wrap" id="audiences">
