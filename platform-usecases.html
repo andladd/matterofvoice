@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Platform — Matter of Voice</title>
+<meta name="description" content="Matter of Voice turns first-person stories into real-time patterns teams use for better reporting, stronger narratives, and faster feedback." />
+<link rel="icon" type="image/ico" href="images/favicon.ico" />
+<link rel="canonical" href="https://www.matterofvoice.com/platform" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta property="og:site_name" content="Matter of Voice" />
+<meta property="og:title" content="The Platform — Matter of Voice" />
+<meta property="og:description" content="Matter of Voice turns first-person stories into real-time patterns teams use for better reporting, stronger narratives, and faster feedback." />
+<meta property="og:url" content="https://www.matterofvoice.com/platform" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://www.matterofvoice.com/images/product-social.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Platform — Matter of Voice" />
+<meta name="twitter:description" content="Matter of Voice turns first-person stories into real-time patterns teams use for better reporting, stronger narratives, and faster feedback." />
+<meta name="twitter:url" content="https://www.matterofvoice.com/platform" />
+<meta name="twitter:image" content="https://www.matterofvoice.com/images/product-social.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --pink:      #ec3b93;
+  --orange:    #ef6838;
+  --navy:      #333365;
+  --teal:      #2899a3;
+  --green:     #6fd59f;
+  --off-white: #f7f6f3;
+  --rule:      #e2e0dc;
+  --text:      #1c1c20;
+  --muted:     #6b6b70;
+  --serif:     'DM Serif Display', serif;
+  --sans:      'DM Sans', sans-serif;
+}
+body { font-family: var(--sans); background: var(--off-white); color: var(--text); -webkit-font-smoothing: antialiased; }
+
+/* ── UNIVERSAL SITE NAV ── */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: rgba(247,246,243,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--rule);
+  height: 68px;
+  display: flex;
+  align-items: center;
+  padding: 0 6%;
+  justify-content: space-between;
+}
+
+.site-nav .nav-logo img {
+  height: 50px;
+  display: block;
+}
+
+.site-nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.site-nav .nav-links a {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+
+.site-nav .nav-links a:hover {
+  color: var(--text);
+}
+
+.site-nav .nav-links a.active {
+  color: var(--text);
+}
+
+.site-nav .nav-cta {
+  background: var(--pink);
+  color: #fff !important;
+  padding: 9px 20px;
+  border-radius: 5px;
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+  transition: opacity 0.2s !important;
+}
+
+.site-nav .nav-cta:hover {
+  opacity: 0.88;
+}
+
+/* ── NAV TOGGLE (HAMBURGER) ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle span {
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  display: block;
+}
+
+
+@media (max-width: 860px) {
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav .nav-links {
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: var(--off-white);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 6%;
+    gap: 16px;
+    border-bottom: 1px solid var(--rule);
+    display: none;
+  }
+
+  .site-nav.open .nav-links {
+    display: flex;
+  }
+
+}
+
+
+.label { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 20px; }
+
+/* PAGE HEADER */
+.page-header {
+  padding-top: 68px;
+  background: var(--navy);
+  padding-bottom: 0;
+}
+.page-header-inner {
+  padding: 80px 6% 72px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.page-header h1 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4vw, 60px);
+  line-height: 1.07; letter-spacing: -0.025em; color: #fff;
+}
+.page-header h1 em { font-style: italic; color: var(--pink); }
+.page-header-right {
+  display: flex; flex-direction: column; gap: 28px;
+}
+.page-header p {
+  font-size: 16px; line-height: 1.7; color: #CCCCCC; font-weight: 300;
+}
+.btn-primary {
+  display: inline-block; background: var(--pink); color: #fff;
+  padding: 12px 26px; border-radius: 5px;
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  transition: opacity 0.2s; align-self: flex-start;
+}
+.btn-primary:hover { opacity: 0.88; }
+
+/* SUBNAV */
+.platform-subnav {
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  z-index: 180;
+  background: var(--navy);
+  padding: 0 6%;
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.pnav-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  padding: 18px 0;
+  margin-right: 36px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.pnav-link:hover {
+  color: rgba(255,255,255,0.75);
+}
+
+.pnav-link.active {
+  color: #fff;
+  border-bottom-color: var(--pink);
+}
+
+/* CAPABILITY SECTIONS */
+.cap-section {
+  padding: 96px 6%;
+  border-bottom: 1px solid var(--rule);
+}
+.cap-section:nth-child(even) { background: #fff; }
+
+.cap-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.cap-grid.reverse { direction: rtl; }
+.cap-grid.reverse > * { direction: ltr; }
+
+.cap-text {}
+.cap-text h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 2.8vw, 44px);
+  line-height: 1.1; letter-spacing: -0.02em; color: var(--text);
+  margin-bottom: 20px;
+}
+.cap-text h2 em { font-style: italic; color: var(--pink); }
+.cap-text p {
+  font-size: 15.5px; line-height: 1.75; color: var(--muted);
+  font-weight: 300; margin-bottom: 32px;
+}
+.cap-features { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.cap-features li {
+  font-size: 14px; color: var(--text);
+  padding: 14px 0;
+  border-top: 1px solid var(--rule);
+  display: flex; gap: 14px; align-items: baseline;
+  line-height: 1.55;
+}
+.cap-features li::before {
+  content: ''; display: block;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--pink); flex-shrink: 0; margin-top: 7px;
+}
+.cap-benefit {
+  display: inline-block; margin-top: 28px;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--teal);
+}
+
+.cap-visual {
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 20px 64px rgba(0,0,0,0.10);
+}
+.cap-visual img { width: 100%; display: block; }
+
+/* FEATURE MATRIX */
+.matrix-section {
+  padding: 96px 6%;
+  border-bottom: 1px solid var(--rule);
+}
+.matrix-section h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 2.8vw, 44px);
+  line-height: 1.1; letter-spacing: -0.02em;
+  margin-bottom: 52px;
+}
+.matrix-section h2 em { font-style: italic; color: var(--pink); }
+
+.matrix-table {
+  width: 100%; border-collapse: collapse;
+}
+.matrix-table th {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted);
+  text-align: left; padding: 0 0 16px;
+  border-bottom: 2px solid var(--rule);
+}
+.matrix-table th:not(:first-child) { text-align: center; padding-left: 20px; }
+.matrix-table td {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 14px; color: var(--text);
+  vertical-align: middle;
+}
+.matrix-table td:not(:first-child) {
+  text-align: center; padding-left: 20px;
+}
+.matrix-table td:first-child { font-weight: 500; }
+.matrix-table td small {
+  display: block; font-size: 12px; color: var(--muted); font-weight: 300; margin-top: 3px;
+}
+.matrix-group th {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pink);
+  text-align: left;
+  padding: 28px 0 12px;
+  border-bottom: none;
+  border-top: 2px solid var(--rule);
+}
+.dot-yes {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--green); display: inline-block; opacity: 0.85;
+}
+.dot-partial {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--rule); display: inline-block;
+  border: 2px solid var(--muted);
+}
+.row-group th {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--pink);
+  padding-top: 36px; border-bottom: none; border-top: 2px solid var(--rule);
+}
+
+/* PANELS CALLOUT */
+.panels-section {
+  padding: 96px 6%;
+  background: var(--navy);
+  border-bottom: 1px solid var(--rule);
+}
+.panels-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+}
+.panels-text .label { color: #A6A6A6; }
+.panels-text h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 2.8vw, 44px);
+  line-height: 1.1; letter-spacing: -0.02em; color: #fff;
+  margin-bottom: 20px;
+}
+.panels-text h2 em { color: var(--pink); font-style: italic; }
+.panels-text p {
+  font-size: 15.5px; line-height: 1.75;
+  color: #CCCCCC; font-weight: 300;
+  margin-bottom: 28px;
+}
+.panels-text a {
+  font-size: 14px; font-weight: 600; color: var(--green);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+}
+.panels-differentiators {
+  display: flex; flex-direction: column; gap: 0;
+}
+.pd-item {
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.pd-item:first-child { padding-top: 0; }
+.pd-item:last-child { border-bottom: none; }
+.pd-item h4 {
+  font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px;
+}
+.pd-item p {
+  font-size: 13.5px; line-height: 1.65; color: rgba(255,255,255,0.4);
+}
+
+/* CTA */
+.cta-strip {
+  padding: 72px 6%;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 40px;
+}
+.cta-strip h3 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.4vw, 36px);
+  line-height: 1.2;
+}
+.cta-strip h3 em { font-style: italic; color: var(--pink); }
+.cta-strip a {
+  display: inline-block; background: var(--pink); color: #fff;
+  padding: 13px 28px; border-radius: 5px;
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  white-space: nowrap; transition: opacity 0.2s;
+}
+.cta-strip a:hover { opacity: 0.88; }
+
+footer {
+  background: #14141a; padding: 64px 6% 40px;
+}
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 56px;
+  padding-bottom: 52px; border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.footer-brand img { height: 26px; display: block; margin-bottom: 18px; }
+.footer-brand p { font-size: 13px; line-height: 1.7; color: #B3B3B3; max-width: 240px; }
+.footer-col h5 { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #A0A0A0; margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { font-size: 13.5px; color: #D1D1D1; text-decoration: none; transition: color 0.2s; }
+.footer-col a:hover { color: #CCCCCC; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; }
+.footer-bottom p, .footer-bottom a { font-size: 12px; color: #8F8F8F; text-decoration: none; }
+.footer-legal { display: flex; gap: 20px; }
+
+.sr { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.sr.in { opacity: 1; transform: none; }
+.sr-d1 { transition-delay: 0.1s; }
+.sr-d2 { transition-delay: 0.2s; }
+
+@media (max-width: 860px) {
+  .page-header-inner { grid-template-columns: 1fr; gap: 32px; }
+  .cap-grid, .cap-grid.reverse { grid-template-columns: 1fr; direction: ltr; }
+  .panels-inner { grid-template-columns: 1fr; gap: 48px; }
+  .cta-strip { flex-direction: column; align-items: flex-start; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+
+/* ── USE CASES EXPLORER ── */
+.use-cases-section {
+  padding: 96px 6%;
+  border-bottom: 1px solid var(--rule);
+  background: #eae9e5;
+}
+.uc-header { margin-bottom: 52px; }
+.uc-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 2.8vw, 44px);
+  line-height: 1.1; letter-spacing: -0.02em; color: var(--text);
+  margin-bottom: 16px;
+}
+.uc-header h2 em { font-style: italic; color: var(--pink); }
+.uc-intro {
+  font-size: 15.5px; line-height: 1.7; color: var(--muted);
+  font-weight: 300; max-width: 560px;
+}
+
+/* ORG TABS */
+.uc-org-tabs {
+  display: flex; gap: 0;
+  border-bottom: 2px solid var(--rule);
+  margin-bottom: 28px;
+}
+.uc-org-tab {
+  background: none; border: none; cursor: pointer;
+  font-family: var(--sans); font-size: 14px; font-weight: 500;
+  color: var(--muted); padding: 12px 28px 14px;
+  border-bottom: 2px solid transparent; margin-bottom: -2px;
+  transition: color 0.2s, border-color 0.2s, opacity 0.2s;
+}
+.uc-org-tab:hover { color: var(--text); }
+.uc-org-tab.active { color: var(--text); border-bottom-color: var(--pink); font-weight: 600; }
+.uc-org-tab.dimmed { opacity: 0.4; }
+
+/* FUNCTION FILTERS */
+.uc-fn-filters {
+  display: flex; align-items: center; gap: 12px;
+  flex-wrap: wrap; margin-bottom: 40px;
+}
+.uc-fn-label {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted);
+}
+.uc-fn-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.uc-fn-pill {
+  background: none; border: 1px solid var(--rule); cursor: pointer;
+  font-family: var(--sans); font-size: 12.5px; font-weight: 500;
+  color: var(--muted); padding: 6px 14px; border-radius: 20px;
+  transition: all 0.2s;
+}
+.uc-fn-pill:hover { border-color: var(--navy); color: var(--navy); }
+.uc-fn-pill.active {
+  background: var(--pink); border-color: var(--pink); color: #fff;
+}
+
+/* EXPLORER LAYOUT */
+.uc-explorer {
+  display: grid; grid-template-columns: 30% 70%; gap: 0;
+  border: 1px solid var(--rule); border-radius: 8px; overflow: hidden;
+  min-height: 480px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+/* LEFT LIST */
+.uc-list {
+  border-right: 1px solid var(--rule);
+  display: flex; flex-direction: column;
+  background: var(--off-white);
+}
+.uc-list-item {
+  padding: 18px 22px; border-bottom: 1px solid var(--rule);
+  cursor: pointer; transition: background 0.15s;
+  display: flex; flex-direction: column; gap: 5px;
+  border-left: 3px solid transparent;
+}
+.uc-list-item:last-child { border-bottom: none; }
+.uc-list-item:hover { background: #ebebea; }
+.uc-list-item.active {
+  background: #fff;
+  border-left-color: var(--pink);
+  padding-left: 19px;
+}
+.uc-list-item-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--pink);
+}
+.uc-list-item-title {
+  font-size: 13.5px; font-weight: 600; color: var(--text);
+  line-height: 1.35;
+}
+.uc-list-item-trigger {
+  font-size: 12px; color: var(--muted); line-height: 1.5;
+}
+.uc-list-item.active .uc-list-item-trigger { display: none; }
+.uc-list-empty {
+  padding: 40px 24px; font-size: 13.5px; color: var(--muted);
+  line-height: 1.6;
+}
+
+/* RIGHT DETAIL */
+.uc-detail {
+  padding: 44px 48px;
+  background: #fff;
+  display: flex; flex-direction: column;
+}
+.uc-detail-empty {
+  display: flex; align-items: center; justify-content: center;
+  height: 100%; color: var(--muted); font-size: 14px;
+}
+.uc-detail-org {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--pink); margin-bottom: 8px;
+}
+.uc-detail-title {
+  font-family: var(--serif); font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.15; color: var(--text); margin-bottom: 12px;
+}
+.uc-detail-trigger {
+  font-size: 14px; color: var(--muted); font-style: italic;
+  line-height: 1.6; margin-bottom: 36px;
+  padding-bottom: 28px; border-bottom: 1px solid var(--rule);
+}
+.uc-steps { display: flex; flex-direction: column; gap: 20px; padding-top: 4px; }
+.uc-step {
+  display: grid; grid-template-columns: 30px 1fr;
+  gap: 0 18px; align-items: start;
+}
+.uc-step-icon {
+  color: var(--navy);
+  flex-shrink: 0;
+  margin-top: 3px;
+  opacity: 0.75;
+}
+.uc-step-icon svg { width: 22px; height: 22px; display: block; }
+.uc-step-text {
+  font-size: 14px; line-height: 1.75; color: var(--text); font-weight: 300;
+}
+.uc-detail-outcome {
+  margin-top: 36px; padding: 20px 24px;
+  background: var(--off-white); border: 1px solid var(--rule); border-radius: 6px;
+  border-left: 3px solid var(--teal);
+}
+.uc-outcome-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 6px;
+}
+.uc-outcome-text {
+  font-size: 13.5px; line-height: 1.65; color: var(--text); font-weight: 400;
+}
+.uc-detail-fns {
+  margin-top: 20px; display: flex; gap: 6px; flex-wrap: wrap;
+}
+.uc-fn-tag {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted);
+  border: 1px solid var(--rule); padding: 4px 10px; border-radius: 4px;
+  background: var(--off-white);
+}
+
+/* MOBILE NAV */
+.uc-mobile-nav {
+  display: none; align-items: center; justify-content: center;
+  gap: 16px; margin-top: 24px;
+}
+.uc-arrow {
+  background: #fff; border: 1px solid var(--rule);
+  border-radius: 50%; width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text); transition: border-color 0.2s;
+}
+.uc-arrow:hover { border-color: var(--text); }
+.uc-arrow:disabled { opacity: 0.3; cursor: default; }
+.uc-dots { display: flex; gap: 6px; }
+.uc-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(0,0,0,0.15); transition: background 0.2s;
+}
+.uc-dot.active { background: var(--pink); }
+
+/* MOBILE OVERRIDES */
+@media (max-width: 860px) {
+  .uc-explorer {
+    grid-template-columns: 1fr;
+    border: none; border-radius: 0;
+    overflow: visible;
+    min-height: 0;
+    box-shadow: none;
+  }
+  .uc-list { display: none; }
+  .uc-detail {
+    padding: 32px 24px;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  .uc-mobile-nav { display: flex; }
+  .uc-fn-filters { gap: 8px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- UNIVERSAL SITE NAV -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">
+    <img src="https://images.squarespace-cdn.com/content/v1/68e698bf75ec1f7f1c7230de/c4e6c8c4-4027-4557-9e95-827803ef03b3/Matter_of_Voice_logo_SCREEN.png?format=1000w" alt="Matter of Voice">
+  </a>
+  <button class="nav-toggle" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <ul class="nav-links">
+    <li><a href="platform.html" class="active">Platform</a></li>
+    <li><a href="security.html">Security</a></li>
+    <li><a href="index.html#audiences">Who It's For</a></li>
+    <li><a href="scheduler.html" class="nav-cta">Schedule a conversation</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <span class="label" style="color:rgba(255,255,255,0.3);">The Platform</span>
+      <h1>Built for the full<br>voice <em>lifecycle.</em></h1>
+    </div>
+
+    <div class="page-header-right">
+      <p>Built around anonymized, mobile voice-to-text story collection to reach communities on their terms. Platform reduces staff burden with question generation and deployment support, backed by philanthopy-specific analysis tools.</p>
+      <a href="scheduler.html" class="btn-primary">Schedule a conversation</a>
+    </div>
+  </div>
+
+<nav class="platform-subnav">
+  <a href="#collect" class="pnav-link active">Collection</a>
+  <a href="#analysis" class="pnav-link">Analysis & Reporting</a>
+  <a href="#sharing" class="pnav-link">Partner Sharing</a>
+  <a href="#panels" class="pnav-link">Community Panels</a>
+  <a href="#use-cases" class="pnav-link">How It's Used</a>
+</nav>
+</div>
+
+<!-- COLLECT -->
+<div class="cap-section" id="collect">
+  <div class="cap-grid">
+    <div class="cap-text sr">
+      <span class="label">Collection</span>
+      <h2>Stories from the communities<br>you actually need to <em>hear from.</em></h2>
+      <p>Share a link or QR code. Community members respond in their own words, in most languages, on their own phone, in their own time. No account. No download. No staff hand-holding needed. Stories arrive immediately.</p>
+      <ul class="cap-features">
+        <li>Mobile-first, link and QR code delivery</li>
+        <li>Anonymous by default — no personal information collected through standard participation</li>
+        <li>Available in most languages with automatic translation</li>
+        <li>Participants see emerging themes from others before they submit, making the exchange reciprocal</li>
+        <li>No account creation, email address, or app download required</li>
+        <li>Voluntary and consent-based — plain-language consent before each submission</li>
+      </ul>
+      <span class="cap-benefit">Reach participants that surveys and phone outreach miss</span>
+    </div>
+    <div class="cap-visual sr sr-d1">
+      <img src="https://images.squarespace-cdn.com/content/v1/68e698bf75ec1f7f1c7230de/68b62ab2-6d66-4d49-a35d-ae5ef44a9aba/phone+screen_hand.png?format=750w" alt="Mobile story collection">
+    </div>
+  </div>
+</div>
+
+<!-- ANALYSIS -->
+<div class="cap-section" id="analysis">
+  <div class="cap-grid reverse">
+    <div class="cap-text sr">
+      <span class="label">Analysis & Reporting</span>
+      <h2>Board-ready insight,<br>without the <em>analysis sprint.</em></h2>
+      <p>Stories are anonymized, grouped into themes, and made filterable by issue, geography, and demographics the moment they arrive. No manual coding. No waiting until the end of a grant cycle to see what people are saying.</p>
+      <ul class="cap-features">
+        <li>Real-time theme identification across all collected stories</li>
+        <li>Filterable by issue area, location, demographic, and time period</li>
+        <li>Spam filtering and automatic removal of identifying information</li>
+        <li>One-click report generation for funders, boards, and strategy sessions</li>
+        <li>Compare themes across different population groups or geographies</li>
+        <li>Export formats appropriate for grant reporting and board presentations</li>
+      </ul>
+      <span class="cap-benefit">Analysis that runs continuously, not once before a deadline</span>
+    </div>
+    <div class="cap-visual sr sr-d1">
+      <img src="https://images.squarespace-cdn.com/content/v1/68e698bf75ec1f7f1c7230de/252eee5f-1ea7-46d8-a058-1e0276945309/report.png?format=2500w" alt="Themes and reporting dashboard">
+    </div>
+  </div>
+</div>
+
+<!-- SHARING -->
+<div class="cap-section" id="sharing">
+  <div class="cap-grid">
+    <div class="cap-text sr">
+      <span class="label">Partner Sharing</span>
+      <h2>One collection effort.<br><em>Organization-wide</em> utility.</h2>
+      <p>Partners and grantees contribute to a shared story pool. Every team draws from the same source of truth. Program staff, development, communications, and strategy work from the same evidence base rather than building separate data silos.</p>
+      <ul class="cap-features">
+        <li>Multi-organization story pooling with role-based access controls</li>
+        <li>Team and partner management tools that distribute collection prompts across your network</li>
+        <li>Auto-generated outreach content for text, email, and social media distribution</li>
+        <li>Grantees contribute without managing their own platform instances</li>
+        <li>Shared insight surfaces across strategy, programs, communications, and development</li>
+        <li>Reduce duplicated community outreach across your partner network</li>
+      </ul>
+      <span class="cap-benefit">Community voice becomes an organizational resource, not a team asset</span>
+    </div>
+    <div class="cap-visual sr sr-d1">
+      <img src="images/partners_hero_crop.png" alt="Partner sharing dashboard">
+    </div>
+  </div>
+</div>
+
+<!-- PANELS -->
+<div class="panels-section" id="panels">
+  <div class="panels-inner">
+    <div class="panels-text sr">
+      <span class="label">Community Panels</span>
+      <h2>Deeper dialogue.<br>Ongoing <em>learning.</em></h2>
+      <p>Community Panels is an optional feature that lets organizations invite story contributors into compensated advisory panels. Deeper engagement, follow-up questions, and longitudinal insight — without repeated extraction.</p>
+      <p>Panels are built for Research and Evaluation teams that need two-way dialogue, not just submission data.</p>
+    </div>
+    <div class="panels-differentiators">
+      <div class="pd-item sr sr-d1">
+        <h4>Targeted recruitment from existing contributors</h4>
+        <p>Invite participants whose stories match your research focus. Automated outreach handled by the platform.</p>
+      </div>
+      <div class="pd-item sr sr-d1">
+        <h4>Asynchronous dialogue via mobile</h4>
+        <p>Follow-up questions delivered to participants on their phones. No scheduling, no facilitated sessions required.</p>
+      </div>
+      <div class="pd-item sr sr-d2">
+        <h4>Compensated participation</h4>
+        <p>Pay participants for their time through the platform. Compensation management handled without additional administrative burden.</p>
+      </div>
+      <div class="pd-item sr sr-d2">
+        <h4>Cumulative learning over time</h4>
+        <p>Panel relationships persist. Organizations build longitudinal understanding rather than starting over each cycle.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- USE CASES -->
+<div class="use-cases-section" id="use-cases">
+  <div class="uc-header sr">
+    <span class="label">How It's Used</span>
+    <h2>Real scenarios.<br><em>Tangible</em> starting points.</h2>
+    <p class="uc-intro">Select your organization type to see how teams like yours put the platform to work today, not someday.</p>
+  </div>
+
+  <!-- ORG TABS -->
+  <div class="uc-org-tabs" role="tablist">
+    <button class="uc-org-tab active" data-org="foundations" role="tab" aria-selected="true">Foundations</button>
+    <button class="uc-org-tab" data-org="nonprofits" role="tab" aria-selected="false">Nonprofits</button>
+    <button class="uc-org-tab" data-org="networks" role="tab" aria-selected="false">Networks</button>
+  </div>
+
+  <!-- FUNCTION FILTERS -->
+  <div class="uc-fn-filters">
+    <span class="uc-fn-label">Filter by function:</span>
+    <div class="uc-fn-pills">
+      <button class="uc-fn-pill active" data-fn="all">All</button>
+      <button class="uc-fn-pill" data-fn="programs">Programs</button>
+      <button class="uc-fn-pill" data-fn="grantmaking">Grantmaking</button>
+      <button class="uc-fn-pill" data-fn="development">Development</button>
+      <button class="uc-fn-pill" data-fn="communications">Communications</button>
+      <button class="uc-fn-pill" data-fn="evaluation">Evaluation</button>
+    </div>
+  </div>
+
+  <!-- EXPLORER -->
+  <div class="uc-explorer">
+
+    <!-- LEFT: CASE LIST -->
+    <div class="uc-list" id="ucList">
+      <!-- populated by JS -->
+    </div>
+
+    <!-- RIGHT: CASE DETAIL -->
+    <div class="uc-detail" id="ucDetail">
+      <!-- populated by JS -->
+    </div>
+
+  </div>
+
+  <!-- MOBILE CAROUSEL CONTROLS -->
+  <div class="uc-mobile-nav" id="ucMobileNav">
+    <button class="uc-arrow" id="ucPrev" aria-label="Previous">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="uc-dots" id="ucDots"></div>
+    <button class="uc-arrow" id="ucNext" aria-label="Next">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+</div>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <h3>Ready to see it<br>in <em>practice?</em></h3>
+  <a href="scheduler.html">Schedule a 20-minute conversation</a>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="https://images.squarespace-cdn.com/content/v1/68e698bf75ec1f7f1c7230de/0c7e1e44-ba63-4e9c-b4fd-f5569670a43d/Matter_of_Voice_logo_WHITE.png?format=1000w" alt="Matter of Voice">
+      <p>A lived experience platform for foundations and nonprofits. Currently serving organizations across the United States.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Platform</h5>
+      <ul>
+        <li><a href="#collect">Story Collection</a></li>
+        <li><a href="#analysis">Analysis & Reporting</a></li>
+        <li><a href="#sharing">Partner Sharing</a></li>
+        <li><a href="#panels">Community Panels</a></li>
+        <li><a href="#use-cases">How It's Used</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Organization</h5>
+      <ul>
+        <li><a href="index.html#audiences">Who It's For</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Get in Touch</h5>
+      <ul>
+        <li><a href="mailto:demo@matterofvoice.com">demo@matterofvoice.com</a></li>
+        <li><a href="scheduler.html">Schedule a demo</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Matter of Voice. All rights reserved. US-only.</p>
+    <div class="footer-legal">
+<!-- THIS IS HIDDEN FROM VIEW UNTIL THESE PAGES ARE AVAILABLE  
+     <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+-->  
+</div>
+</footer>
+
+<script>
+// subnav active state on scroll
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.pnav-link');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => obs.observe(s));
+
+const srObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+document.querySelectorAll('.sr').forEach(el => srObs.observe(el));
+
+
+/* NAV TOGGLE */
+const toggle = document.querySelector('.nav-toggle');
+const siteNav = document.querySelector('.site-nav');
+
+if (toggle && siteNav) {
+  toggle.addEventListener('click', () => {
+    siteNav.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      siteNav.classList.remove('open');
+    });
+  });
+}
+
+
+
+
+/* ── USE CASES EXPLORER ── */
+const USE_CASES = {
+  foundations: [
+    {
+      id: 'f1',
+      title: 'Pre-Convening Agenda Setting',
+      functions: ['programs','grantmaking'],
+      trigger: 'I need to build my convening agenda before the room fills.',
+      steps: [
+        { icon: 'write', text: 'I write one question for my partner network: <em>"What\'s the most exciting story you\'ve recently heard someone tell about your program?"</em>' },
+        { icon: 'send',  text: 'I send it to my partner list in MoV and ask for responses by next week.' },
+        { icon: 'person',  text: 'Partners get a link by email and respond by voice, text, or upload whenever it\'s convenient.' },
+        { icon: 'insight', text: 'I check the stories page before the convening and use the top themes to open the conversation, so we\'re building on what the room already knows.' }
+      ],
+      outcome: 'I walk in with an agenda built from actual signal, not my assumptions about what the room needs.'
+    },
+    {
+      id: 'f2',
+      title: 'Community Needs Assessment',
+      functions: ['programs','evaluation'],
+      trigger: 'I need to run a community needs assessment this year.',
+      steps: [
+        { icon: 'write',  text: 'I write a question asking community members in a specific place to share recent challenges that make it hard to get by.' },
+        { icon: 'send',   text: 'I send it to my partners along with print-ready materials and QR codes, and ask them to push it through their own channels. No extra coordination from me once it\'s out.' },
+        { icon: 'person', text: 'Community members see the question where they already are: a waiting room, a food pantry, a community center. They respond on their phone, in their language, when they have a moment.' },
+        { icon: 'insight',text: 'I pull a report comparing needs across neighborhoods, demographics, and time as responses come in.' }
+      ],
+      outcome: 'I have a needs picture built from community voice, not staff inference, that holds up with leadership.'
+    },
+    {
+      id: 'f3',
+      title: 'Burdenless Program Evaluation',
+      functions: ['grantmaking','evaluation'],
+      trigger: 'I need grantee impact stories without burdening them to write one.',
+      steps: [
+        { icon: 'write',  text: 'I write a question asking community members to share a story where they saw or experienced inequitable treatment in the clinic.' },
+        { icon: 'send',   text: 'I send it to my partners connected to that work and ask them to distribute it through their channels.' },
+        { icon: 'person', text: 'People respond on their phone, privately and anonymously, without a staff member present, which changes what they\'re willing to say.' },
+        { icon: 'insight',text: 'I see top themes across all the stories and use them to identify the range of issues we need to address. No grantee had to craft or submit a single narrative to make this happen.' }
+      ],
+      outcome: 'I get real stories from the community level without asking any single grantee to produce them.'
+    },
+    {
+      id: 'f4',
+      title: 'Grantee Relationship Evaluation',
+      functions: ['grantmaking','programs'],
+      trigger: 'I need to understand how easy or hard we are to work with.',
+      steps: [
+        { icon: 'write',  text: 'I write a question asking my partners to share a story about why it\'s difficult, or easy, to work with us as a funder.' },
+        { icon: 'send',   text: 'I send it directly to my partner list and ask for responses within the week.' },
+        { icon: 'person', text: 'Partners get a link by email and respond by voice, text, or upload on their own schedule, privately, without anyone from our team in the room.' },
+        { icon: 'insight',text: 'I review the themes, flag a few representative stories, and bring them into our next internal conversation about how we\'re showing up as a funder.' }
+      ],
+      outcome: 'I get honest signal about our grantmaking relationship without putting anyone in an uncomfortable position.'
+    }
+  ],
+  nonprofits: [
+    {
+      id: 'n1',
+      title: 'Advocacy and Policy Change',
+      functions: ['communications','programs'],
+      trigger: 'I need real stories to make our policy case more persuasive.',
+      steps: [
+        { icon: 'write',  text: 'I write a question asking community members to share a real story about how changes in SNAP benefits have affected their family.' },
+        { icon: 'send',   text: 'I distribute it through our channels and send QR codes and print materials to our partner list, so it reaches people in the places they already go: grocery lines, community meetings, clinics.' },
+        { icon: 'person', text: 'Community members respond in their language, anonymously, when it fits their day.' },
+        { icon: 'insight',text: 'I check the stories page and see themes emerging alongside individual accounts I can pull directly. I go into the policy conversation with 80 stories, not three anecdotes and a percentage point.' }
+      ],
+      outcome: 'Our advocacy moves from organizational position to community-grounded evidence that decision-makers have a harder time setting aside.'
+    },
+    {
+      id: 'n2',
+      title: 'Funding Narrative Development',
+      functions: ['development','communications'],
+      trigger: 'I need stronger community stories for our next funding ask.',
+      steps: [
+        { icon: 'write',  text: 'I write a question asking community members to share a story about a time they needed a service and couldn\'t get it, or didn\'t know it existed.' },
+        { icon: 'send',   text: 'I send it through our channels and distribute it to our partner list with a request to push it through theirs.' },
+        { icon: 'person', text: 'Partners share it digitally and in person, posted at service locations, handed to people in waiting areas, distributed wherever they already have contact. People respond whenever they have a moment.' },
+        { icon: 'insight',text: 'I download audio from the most compelling responses and build a case for program expansion that lets funders hear unmet need directly, rather than read a summary of what we think we heard.' }
+      ],
+      outcome: 'Our next proposal leads with real voices, not staff-written summaries of what we think we heard.'
+    },
+    {
+      id: 'n3',
+      title: 'Community Backbone and Hub Infrastructure',
+      functions: ['programs'],
+      trigger: 'I need shared insight across our partner ecosystem, not siloed reports.',
+      steps: [
+        { icon: 'write',  text: 'I write a question asking my partners to share a story about the housing gaps they\'re seeing in their geography.' },
+        { icon: 'send',   text: 'I send it to our full partner network and ask for responses over the next few weeks. No meeting, no call, no deadline pressure.' },
+        { icon: 'person', text: 'Partners respond from wherever they work, by voice or text, in a few minutes.' },
+        { icon: 'insight',text: 'We all check the stories page as responses come in. Themes emerge across geographies and we adjust our collaboration around what the network is actually surfacing, not what one lead organization assumed was the priority.' }
+      ],
+      outcome: 'Our network stops working from different versions of the same picture and starts sharing a common signal.'
+    },
+    {
+      id: 'n4',
+      title: 'Program Adoption and Improvement',
+      functions: ['programs','evaluation'],
+      trigger: 'I need feedback from people we serve and people we have not reached yet.',
+      steps: [
+        { icon: 'write',  text: 'I write a question asking expectant mothers and their families to share a story about the difficulty getting the support they need.' },
+        { icon: 'send',   text: 'I send it to our service providers and give them print materials and QR codes to place wherever families show up: OB waiting rooms, WIC offices, school hallways, pharmacies. People who never interact with our services can respond just as easily as people who do.' },
+        { icon: 'person', text: 'Families respond privately on their phones, in their language, without an intake worker standing next to them.' },
+        { icon: 'insight',text: 'I compare responses across populations and locations to see exactly where our programs are not reaching people and where what we offer does not match what people actually need.' }
+      ],
+      outcome: 'I find out what\'s not working from the people who experience it, not from staff guessing on their behalf.'
+    }
+  ],
+  networks: [
+    {
+      id: 'a1',
+      title: 'Enhance Member Surveys with Qualitative Data',
+      functions: ['programs','evaluation'],
+      trigger: 'I need to surface what our member surveys are not capturing.',
+      steps: [
+        { icon: 'write',  text: 'I write a question asking my chapters to share a story about a moment when they could have used more, or different, support from us.' },
+        { icon: 'send',   text: 'I send it to members and chapters in MoV and ask for a response over the next week or two.' },
+        { icon: 'person', text: 'Members get a link by email and respond by voice, text, or upload whenever it fits their schedule. No survey window, no login, no friction.' },
+        { icon: 'insight',text: 'I check the stories page and start to see what the survey numbers could not tell me: the context behind the gaps, in members\' own words. I bring the themes to senior leadership alongside the data we already had.' }
+      ],
+      outcome: 'I stop guessing what\'s behind the survey numbers and start seeing the context that explains them.'
+    },
+    {
+      id: 'a2',
+      title: 'Equip Chapters for Local Needs Assessment',
+      functions: ['programs'],
+      trigger: 'I need to know what\'s working in other chapters before we reinvent it locally.',
+      steps: [
+        { icon: 'write',  text: 'I write a question asking chapters to share their best recent story about something they changed or tried that worked.' },
+        { icon: 'send',   text: 'I send it to member organizations across our network, along with print materials and QR codes they can use at their local events and convenings, so the question reaches people in the room, not just on a mailing list.' },
+        { icon: 'person', text: 'Chapter leaders respond in a few minutes, from wherever they are, by voice or text.' },
+        { icon: 'insight',text: 'Members browse emerging themes on the stories page and find approaches that map to their situation. Local leaders stop starting from scratch and start building on what the network has already figured out.' }
+      ],
+      outcome: 'Local leaders stop starting from scratch and start building on what the network already knows.'
+    },
+    {
+      id: 'a3',
+      title: 'Policy Change and Influence',
+      functions: ['communications','programs'],
+      trigger: 'I need community stories that give our policy position real weight.',
+      steps: [
+        { icon: 'write',  text: 'I write a question asking frontline service providers to share a story about how a specific policy gap affects their ability to help the people in their care.' },
+        { icon: 'send',   text: 'I send it to our partners and ask them to distribute it, digitally and in care settings, to providers who encounter this gap regularly.' },
+        { icon: 'person', text: 'Providers respond privately by voice or text, often from the same settings where the gap exists, without needing to schedule time to participate.' },
+        { icon: 'insight',text: 'I see top themes emerging within days and pull a handful of stories that make the evidence specific enough to be difficult to dismiss. Our policy position becomes grounded in what providers are actually experiencing.' }
+      ],
+      outcome: 'Our advocacy moves from organizational position to community-grounded evidence that policymakers can\'t easily set aside.'
+    }
+  ]
+};
+
+const ICONS = {
+  write: `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 2.5a1.5 1.5 0 0 1 2.12 2.12L5 13H2.5v-2.5L11 2.5z"/>
+    <path d="M9.5 4l2 2"/>
+  </svg>`,
+  send: `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="5" width="12" height="9" rx="1.5"/>
+    <path d="M2 7l6 4 6-4"/>
+    <path d="M5.5 5V3.5a2.5 2.5 0 0 1 5 0V5"/>
+  </svg>`,
+  person: `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="8" cy="5" r="2.5"/>
+    <path d="M2.5 14c0-3.038 2.462-5.5 5.5-5.5s5.5 2.462 5.5 5.5"/>
+  </svg>`,
+  insight: `<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 12l3.5-4 3 2.5L12 5l2 2"/>
+    <path d="M14 2v4h-4"/>
+  </svg>`
+};
+
+// ── State ──
+let currentOrg = 'foundations';
+let currentFn = 'all';
+let currentCaseId = null;
+let mobileIndex = 0;
+let filteredCases = [];
+let crossOrgMode = false; // true when a fn pill (not "All") is active
+
+function allCases() {
+  return [...USE_CASES.foundations, ...USE_CASES.nonprofits, ...USE_CASES.networks];
+}
+
+function orgForCase(id) {
+  for (const [org, cases] of Object.entries(USE_CASES)) {
+    if (cases.find(c => c.id === id)) return org;
+  }
+  return '';
+}
+
+function orgLabel(org) {
+  return { foundations: 'Foundation', nonprofits: 'Nonprofit', networks: 'Network' }[org] || '';
+}
+
+// Which function pills are valid across the full dataset
+function availableFunctions() {
+  const fns = new Set();
+  allCases().forEach(c => c.functions.forEach(f => fns.add(f)));
+  return fns;
+}
+
+function buildPills() {
+  const available = availableFunctions();
+  const container = document.querySelector('.uc-fn-pills');
+  if (!container) return;
+  const allFns = ['programs','grantmaking','development','communications','evaluation'];
+  // Always show All + whichever have at least one case
+  container.innerHTML = `<button class="uc-fn-pill active" data-fn="all">All</button>` +
+    allFns
+      .filter(f => available.has(f))
+      .map(f => `<button class="uc-fn-pill" data-fn="${f}">${f.charAt(0).toUpperCase() + f.slice(1)}</button>`)
+      .join('');
+  container.querySelectorAll('.uc-fn-pill').forEach(pill => {
+    pill.addEventListener('click', () => switchFn(pill.dataset.fn));
+  });
+}
+
+function getFilteredCases() {
+  if (crossOrgMode) {
+    return allCases().filter(c => c.functions.includes(currentFn));
+  }
+  const cases = USE_CASES[currentOrg] || [];
+  if (currentFn === 'all') return cases;
+  return cases.filter(c => c.functions.includes(currentFn));
+}
+
+function renderList() {
+  filteredCases = getFilteredCases();
+  const list = document.getElementById('ucList');
+  if (!list) return;
+
+  // Org tab dimming in cross-org mode
+  document.querySelectorAll('.uc-org-tab').forEach(t => {
+    t.classList.toggle('dimmed', crossOrgMode);
+  });
+
+  if (filteredCases.length === 0) {
+    list.innerHTML = '<div class="uc-list-empty">No use cases match this filter.</div>';
+    document.getElementById('ucDetail').innerHTML = '<div class="uc-detail-empty">Select a use case to see the walkthrough.</div>';
+    renderDots();
+    return;
+  }
+
+  if (!filteredCases.find(c => c.id === currentCaseId)) {
+    currentCaseId = filteredCases[0].id;
+    mobileIndex = 0;
+  }
+
+  list.innerHTML = filteredCases.map(c => {
+    const org = orgForCase(c.id);
+    const showOrgLabel = crossOrgMode;
+    return `
+    <div class="uc-list-item${c.id === currentCaseId ? ' active' : ''}" data-id="${c.id}">
+      ${showOrgLabel ? `<span class="uc-list-item-label">${orgLabel(org)}</span>` : ''}
+      <span class="uc-list-item-title">${c.title}</span>
+      <span class="uc-list-item-trigger">${c.trigger}</span>
+    </div>`;
+  }).join('');
+
+  list.querySelectorAll('.uc-list-item').forEach(el => {
+    el.addEventListener('click', () => {
+      currentCaseId = el.dataset.id;
+      mobileIndex = filteredCases.findIndex(c => c.id === currentCaseId);
+      renderList();
+      renderDetail();
+    });
+  });
+
+  renderDetail();
+  renderDots();
+}
+
+function renderDetail() {
+  const detail = document.getElementById('ucDetail');
+  if (!detail) return;
+  const c = filteredCases.find(c => c.id === currentCaseId);
+  if (!c) {
+    detail.innerHTML = '<div class="uc-detail-empty">Select a use case to see the walkthrough.</div>';
+    return;
+  }
+
+  const org = orgForCase(c.id);
+  const fnTags = c.functions.map(f => `<span class="uc-fn-tag">${f}</span>`).join('');
+
+  detail.innerHTML = `
+    <div class="uc-detail-org">${orgLabel(org)}</div>
+    <h3 class="uc-detail-title">${c.title}</h3>
+    <p class="uc-detail-trigger">${c.trigger}</p>
+    <div class="uc-steps">
+      ${c.steps.map(s => `
+        <div class="uc-step">
+          <div class="uc-step-icon">${ICONS[s.icon]}</div>
+          <p class="uc-step-text">${s.text}</p>
+        </div>`).join('')}
+    </div>
+    <div class="uc-detail-outcome">
+      <div class="uc-outcome-label">Result</div>
+      <p class="uc-outcome-text">${c.outcome}</p>
+    </div>
+    <div class="uc-detail-fns">${fnTags}</div>
+  `;
+}
+
+function renderDots() {
+  const dotsEl = document.getElementById('ucDots');
+  const prevBtn = document.getElementById('ucPrev');
+  const nextBtn = document.getElementById('ucNext');
+  if (!dotsEl) return;
+  dotsEl.innerHTML = filteredCases.map((_, i) =>
+    `<div class="uc-dot${i === mobileIndex ? ' active' : ''}"></div>`
+  ).join('');
+  if (prevBtn) prevBtn.disabled = mobileIndex === 0;
+  if (nextBtn) nextBtn.disabled = mobileIndex >= filteredCases.length - 1;
+}
+
+function switchOrg(org) {
+  currentOrg = org;
+  currentCaseId = null;
+  mobileIndex = 0;
+  crossOrgMode = false;
+  currentFn = 'all';
+  document.querySelectorAll('.uc-org-tab').forEach(t => t.classList.toggle('active', t.dataset.org === org));
+  document.querySelectorAll('.uc-fn-pill').forEach(p => p.classList.toggle('active', p.dataset.fn === 'all'));
+  renderList();
+}
+
+function switchFn(fn) {
+  currentFn = fn;
+  mobileIndex = 0;
+  crossOrgMode = fn !== 'all';
+  document.querySelectorAll('.uc-fn-pill').forEach(p => p.classList.toggle('active', p.dataset.fn === fn));
+  // If returning to All, restore org tab active state
+  if (!crossOrgMode) {
+    document.querySelectorAll('.uc-org-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.org === currentOrg);
+      t.classList.remove('dimmed');
+    });
+  }
+  currentCaseId = null;
+  renderList();
+}
+
+document.querySelectorAll('.uc-org-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    if (!tab.classList.contains('dimmed')) switchOrg(tab.dataset.org);
+    // In cross-org mode, clicking a tab resets to that org
+    else switchOrg(tab.dataset.org);
+  });
+});
+
+document.getElementById('ucPrev')?.addEventListener('click', () => {
+  if (mobileIndex > 0) {
+    mobileIndex--;
+    currentCaseId = filteredCases[mobileIndex].id;
+    renderList();
+    renderDetail();
+  }
+});
+
+document.getElementById('ucNext')?.addEventListener('click', () => {
+  if (mobileIndex < filteredCases.length - 1) {
+    mobileIndex++;
+    currentCaseId = filteredCases[mobileIndex].id;
+    renderList();
+    renderDetail();
+  }
+});
+
+// Read URL param to prepopulate org on arrival from index page
+(function() {
+  buildPills();
+  const params = new URLSearchParams(window.location.search);
+  const orgParam = params.get('org');
+  if (orgParam && USE_CASES[orgParam]) {
+    currentOrg = orgParam;
+    document.querySelectorAll('.uc-org-tab').forEach(t => t.classList.toggle('active', t.dataset.org === orgParam));
+  }
+  renderList();
+})();
+
+</script>
+</body>
+</html>
