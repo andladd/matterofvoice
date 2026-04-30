@@ -530,19 +530,25 @@ h2 em {
 }
 .aud-card {
   background: var(--off-white);
-  padding: 44px 40px;
+  padding: 0;
   transition: background 0.2s;
+  display: flex; flex-direction: column;
+  overflow: hidden;
 }
 .aud-card:hover { background: #fff; }
+.aud-card-body {
+  padding: 44px 40px 36px;
+  flex: 1;
+}
 .aud-label {
   font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--pink);
-  display: block; margin-bottom: 16px;
+  display: block; margin-bottom: 14px;
 }
 .aud-card h3 {
-  font-family: var(--serif);
-  font-size: 22px; line-height: 1.2;
-  color: var(--text); margin-bottom: 16px;
+  font-size: 15px; font-weight: 600;
+  color: var(--text); margin-bottom: 12px;
+  line-height: 1.4;
 }
 .aud-card p {
   font-size: 14px; line-height: 1.7; color: var(--muted);
@@ -563,12 +569,20 @@ h2 em {
   margin-top: 7px;
 }
 .aud-use-case-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  margin-top: 24px; font-size: 13px; font-weight: 600;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 40px;
+  font-size: 13px; font-weight: 600;
   color: var(--pink); text-decoration: none;
-  transition: gap 0.2s;
+  border-top: 1px solid var(--rule);
+  background: rgba(214, 87, 74, 0.05);
+  transition: background 0.2s, padding-right 0.2s;
+  gap: 8px;
 }
-.aud-use-case-link:hover { gap: 10px; }
+.aud-use-case-link:hover {
+  background: rgba(214, 87, 74, 0.1);
+  padding-right: 34px;
+}
+.aud-use-case-link svg { flex-shrink: 0; }
 
 /* ── CTA ── */
 .cta-wrap {
@@ -897,44 +911,50 @@ footer {
 
   <div class="audiences-grid">
     <div class="aud-card sr">
-      <span class="aud-label">Foundations</span>
-      <h3>National and Regional Foundations</h3>
-      <p>VP- and Director-level roles in program, impact, strategy, grantmaking, evaluation, and learning at foundations managing complex portfolios and grantee networks.</p>
-      <ul class="aud-list">
-        <li>Community signal available during strategic planning cycles</li>
-        <li>Lived experience evidence that holds up in boardrooms</li>
-        <li>Partner and grantee networks aligned to a shared story base</li>
-        <li>Reduced administrative burden on grantee partners</li>
-      </ul>
-      <a href="platform-usecases.html?org=foundations#use-cases" class="aud-use-case-link">See how foundations use it
+      <div class="aud-card-body">
+        <span class="aud-label">Foundations</span>
+        <h3>VP- and Director-level roles managing complex portfolios and grantee networks.</h3>
+        <ul class="aud-list">
+          <li>Community signal available during strategic planning cycles</li>
+          <li>Lived experience evidence that holds up in boardrooms</li>
+          <li>Partner and grantee networks aligned to a shared story base</li>
+          <li>Reduced administrative burden on grantee partners</li>
+        </ul>
+      </div>
+      <a href="platform-usecases.html?org=foundations#use-cases" class="aud-use-case-link">
+        See how foundations use it
         <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M11.5 7L8 3.5M11.5 7L8 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
     <div class="aud-card sr sr-d1">
-      <span class="aud-label">Nonprofits</span>
-      <h3>Executive Directors and Development Leadership</h3>
-      <p>Organizations running lean teams where community evidence directly supports funding, program design, and organizational credibility with funders.</p>
-      <ul class="aud-list">
-        <li>Grant proposals grounded in real community need</li>
-        <li>Reporting that replaces long narrative with relevant stories</li>
-        <li>Reach communities that don't respond to traditional outreach</li>
-        <li>Needs assessments without additional staff capacity</li>
-      </ul>
-      <a href="platform-usecases.html?org=nonprofits#use-cases" class="aud-use-case-link">See how nonprofits use it
+      <div class="aud-card-body">
+        <span class="aud-label">Nonprofits</span>
+        <h3>Lean teams where community evidence directly supports funding and program design.</h3>
+        <ul class="aud-list">
+          <li>Grant proposals grounded in real community need</li>
+          <li>Reporting that replaces long narrative with relevant stories</li>
+          <li>Reach communities that don't respond to traditional outreach</li>
+          <li>Needs assessments without additional staff capacity</li>
+        </ul>
+      </div>
+      <a href="platform-usecases.html?org=nonprofits#use-cases" class="aud-use-case-link">
+        See how nonprofits use it
         <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M11.5 7L8 3.5M11.5 7L8 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
     <div class="aud-card sr sr-d2">
-      <span class="aud-label">Networks</span>
-      <h3>Chapter and Member Organizations</h3>
-      <p>Organizations with distributed chapter or membership infrastructure that want to build shared learning across local leadership and pool community insight at scale.</p>
-      <ul class="aud-list">
-        <li>Consistent collection standards across chapters and regions</li>
-        <li>Shared story repository accessible to national teams</li>
-        <li>Local leadership empowered to gather and contribute</li>
-        <li>Cross-chapter analysis without creating new data silos</li>
-      </ul>
-      <a href="platform-usecases.html?org=networks#use-cases" class="aud-use-case-link">See how networks use it
+      <div class="aud-card-body">
+        <span class="aud-label">Networks</span>
+        <h3>Distributed chapter and member organizations building shared learning at scale.</h3>
+        <ul class="aud-list">
+          <li>Consistent collection standards across chapters and regions</li>
+          <li>Shared story repository accessible to national teams</li>
+          <li>Local leadership empowered to gather and contribute</li>
+          <li>Cross-chapter analysis without creating new data silos</li>
+        </ul>
+      </div>
+      <a href="platform-usecases.html?org=networks#use-cases" class="aud-use-case-link">
+        See how networks use it
         <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M11.5 7L8 3.5M11.5 7L8 10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
     </div>
