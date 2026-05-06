@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matter of Voice — Free Webinar: Community Voice at Scale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ── */
+:root {
+  --pink:      #ec3b93;
+  --orange:    #ef6838;
+  --navy:      #333365;
+  --teal:      #2899a3;
+  --green:     #6fd59f;
+  --off-white: #f7f6f3;
+  --rule:      #e2e0dc;
+  --text:      #1c1c20;
+  --muted:     #6b6b70;
+  --serif:     'DM Serif Display', serif;
+  --sans:      'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--off-white);
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ── HEADER BAR ── */
+.site-header {
+  background: white;
+  border-bottom: 1px solid var(--rule);
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* MoV logo mark using brand colors */
+.logo-mark {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  width: 32px;
+  height: 32px;
+}
+.logo-mark span {
+  display: block;
+  border-radius: 2px;
+}
+.logo-mark .sq1 { background: var(--pink); }
+.logo-mark .sq2 { background: var(--orange); border-radius: 50%; }
+.logo-mark .sq3 { background: var(--navy); border-radius: 50%; }
+.logo-mark .sq4 { background: var(--orange); }
+
+.logo-text {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--navy);
+  line-height: 1;
+}
+.logo-text span { display: block; font-weight: 300; font-size: 13px; color: var(--muted); letter-spacing: 0.04em; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  color: white;
+  padding: 72px 40px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 360px; height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(236,59,147,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -40px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(40,153,163,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.webinar-label {
+  display: inline-block;
+  background: var(--pink);
+  color: white;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: white;
+  max-width: 760px;
+  margin: 0 auto 20px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--green);
+}
+
+.hero-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.75);
+  max-width: 560px;
+  margin: 0 auto 0;
+  font-weight: 300;
+}
+
+/* event-meta moved to right column */
+
+/* ── TWO-COL LAYOUT ── */
+.page-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 40px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ── SELECTOR CARD (left 2/3) ── */
+.selector-card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.selector-card-header {
+  background: var(--off-white);
+  border-bottom: 1px solid var(--rule);
+  padding: 28px 32px 24px;
+}
+
+.selector-card-body {
+  padding: 32px 32px 36px;
+}
+
+/* ── AUDIENCE SELECTOR ── */
+
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.audience-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.aud-tab {
+  padding: 9px 20px;
+  border-radius: 4px;
+  border: 1.5px solid var(--rule);
+  background: white;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.18s;
+  outline: none;
+}
+
+.aud-tab:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+.aud-tab.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: white;
+}
+
+/* ── AUDIENCE CONTENT PANELS ── */
+.aud-panel {
+  display: none;
+  animation: fadeUp 0.3s ease;
+}
+.aud-panel.visible {
+  display: block;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.panel-headline {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 400;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.panel-headline em {
+  font-style: italic;
+  color: var(--pink);
+}
+
+.panel-lede {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 580px;
+}
+
+.learn-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.learn-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.learn-list li::before {
+  content: '';
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--green);
+  margin-top: 2px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23333365' d='M15 6.5L8.5 13 5 9.5l1.06-1.06L8.5 10.88l5.44-5.44L15 6.5z'/%3E%3C/svg%3E");
+  background-size: 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* value-props moved to platform-section below page body */
+
+/* presenter styles moved to event-details-card */
+
+/* ── RIGHT COLUMN ── */
+.reg-col {
+  position: sticky;
+  top: 84px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Event details card */
+.event-details-card {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 20px 24px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.event-details-card::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(236,59,147,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.edc-free {
+  display: inline-block;
+  background: var(--green);
+  color: var(--navy);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-bottom: 14px;
+}
+
+.edc-title {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* edc-meta rows replaced by compact pill line */
+
+/* ── COMPACT EVENT META ── */
+.edc-meta-compact {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.edc-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 400;
+}
+
+.edc-meta-sep {
+  color: rgba(255,255,255,0.25);
+  font-size: 12px;
+}
+
+/* ── HOSTS IN SELECTOR CARD ── */
+.selector-hosts {
+  padding: 20px 32px 28px;
+  border-top: 1px solid var(--rule);
+}
+
+.selector-hosts-row {
+  display: flex;
+  gap: 28px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.selector-host {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* reuse edc-avatar colors for host initials in light context */
+.selector-hosts .edc-avatar.ts { background: var(--navy); }
+.selector-hosts .edc-avatar.my { background: var(--teal); }
+
+.edc-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 14px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.edc-avatar.ts { background: rgba(255,255,255,0.15); }
+.edc-avatar.my { background: var(--teal); }
+
+.edc-presenter-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+}
+
+.edc-presenter-role {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+}
+
+.reg-card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(51,51,101,0.06);
+}
+
+.reg-card-inner-header {
+  padding: 20px 24px 0;
+}
+
+.reg-card-inner-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.reg-card-body {
+  padding: 20px 24px 24px;
+}
+
+.reg-field {
+  margin-bottom: 16px;
+}
+
+.reg-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.reg-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--rule);
+  border-radius: 5px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text);
+  background: var(--off-white);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.reg-input:focus {
+  border-color: var(--navy);
+  background: white;
+}
+
+.reg-select-group {
+  margin-bottom: 20px;
+}
+
+.audience-select-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.aud-pill-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.aud-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  border: 1.5px solid var(--rule);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--text);
+  transition: all 0.15s;
+  background: var(--off-white);
+  position: relative;
+}
+
+.aud-pill input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.aud-pill-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--rule);
+  flex-shrink: 0;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aud-pill:has(input:checked) {
+  border-color: var(--navy);
+  background: white;
+  color: var(--navy);
+}
+
+.aud-pill:has(input:checked) .aud-pill-dot {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
+.aud-pill:has(input:checked) .aud-pill-dot::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: white;
+}
+
+.aud-pill:hover:not(:has(input:checked)) {
+  border-color: var(--muted);
+}
+
+.zoom-placeholder {
+  background: var(--off-white);
+  border: 1.5px dashed var(--rule);
+  border-radius: 6px;
+  padding: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.zoom-placeholder strong {
+  display: block;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.reg-submit {
+  width: 100%;
+  padding: 14px 20px;
+  background: var(--pink);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  letter-spacing: 0.01em;
+}
+
+.reg-submit:hover {
+  background: #d42e7f;
+  transform: translateY(-1px);
+}
+
+.reg-submit:active {
+  transform: translateY(0);
+}
+
+.reg-privacy {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+/* ── SUCCESS STATE ── */
+.reg-success {
+  display: none;
+  text-align: center;
+  padding: 28px 24px;
+}
+
+.reg-success.visible {
+  display: block;
+}
+
+.reg-success-icon {
+  width: 56px;
+  height: 56px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 24px;
+}
+
+.reg-success h4 {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.reg-success p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── PLATFORM SECTION ── */
+.platform-section {
+  background: var(--off-white);
+  border-top: 1px solid var(--rule);
+  padding: 72px 40px 80px;
+}
+
+.platform-section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.platform-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.platform-section-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 400;
+  color: var(--navy);
+  line-height: 1.25;
+  max-width: 540px;
+}
+
+.platform-section-header h2 em {
+  font-style: italic;
+  color: var(--pink);
+}
+
+.platform-link {
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 2px solid var(--navy);
+  padding-bottom: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.platform-link:hover {
+  color: var(--pink);
+  border-color: var(--pink);
+}
+
+.platform-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.pc {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 24px;
+  border-top: 3px solid var(--navy);
+  transition: box-shadow 0.18s;
+}
+
+.pc:hover {
+  box-shadow: 0 4px 20px rgba(51,51,101,0.08);
+}
+
+.pc:nth-child(2) { border-top-color: var(--pink); }
+.pc:nth-child(3) { border-top-color: var(--teal); }
+.pc:nth-child(4) { border-top-color: var(--orange); }
+
+.pc-title {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--navy);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.pc-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── PRODUCT SHOWCASE ── */
+.product-showcase {
+  margin-top: 56px;
+  padding-top: 48px;
+  border-top: 1px solid var(--rule);
+}
+
+.ps-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.ps-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 20px;
+  align-items: start;
+}
+
+.ps-main,
+.ps-secondary {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ps-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ps-img-wrap {
+  overflow: hidden;
+  background: var(--off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ps-img-desktop {
+  height: 280px;
+}
+
+.ps-img-report {
+  height: 180px;
+}
+
+.ps-img-phone {
+  height: 160px;
+}
+
+.ps-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.ps-img-phone img {
+  object-fit: contain;
+  object-position: center;
+  padding: 8px;
+}
+
+.ps-main:hover .ps-img-wrap img,
+.ps-secondary:hover .ps-img-wrap img {
+  transform: scale(1.02);
+}
+
+.ps-caption {
+  padding: 16px 20px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+  border-top: 1px solid var(--rule);
+}
+
+.ps-caption strong {
+  display: block;
+  font-weight: 600;
+  color: var(--navy);
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--text);
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  padding: 28px 40px;
+  font-size: 13px;
+}
+
+footer a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .page-body {
+    grid-template-columns: 1fr;
+    padding: 32px 20px;
+  }
+  .reg-col {
+    position: static;
+  }
+  .platform-section { padding: 48px 20px 56px; }
+  .platform-section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .platform-cards { grid-template-columns: 1fr 1fr; }
+  .ps-grid { grid-template-columns: 1fr; }
+  .ps-stack { flex-direction: row; }
+  .ps-img-desktop { height: 220px; }
+  .ps-img-report, .ps-img-phone { height: 160px; }
+  .hero { padding: 48px 24px 40px; }
+  .hero h1 { font-size: 1.9rem; }
+  .selector-card-header, .selector-card-body { padding: 20px; }
+}
+
+@media (max-width: 540px) {
+  .platform-cards { grid-template-columns: 1fr; }
+  .ps-stack { flex-direction: column; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="https://www.matterofvoice.com" target="_blank" rel="noopener" style="display:flex;align-items:center;text-decoration:none;">
+    <img
+      src="https://images.squarespace-cdn.com/content/68e698bf75ec1f7f1c7230de/c4e6c8c4-4027-4557-9e95-827803ef03b3/Matter_of_Voice_logo_SCREEN.png?content-type=image%2Fpng"
+      alt="Matter of Voice"
+      height="36"
+      style="height:36px;width:auto;display:block;"
+    >
+  </a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="webinar-label">Free Webinar</div>
+  <h1>Community voice belongs at the<br><em>center of every decision.</em></h1>
+  <p class="hero-sub">Join us to explore how a coordinated approach to lived experience can transform how your organization listens, learns, and acts — without adding burden.</p>
+
+</section>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+
+  <!-- LEFT: SELECTOR CARD (2/3) -->
+  <div class="selector-card">
+    <div class="selector-card-header">
+      <p class="section-eyebrow" style="margin-bottom: 12px;">This webinar is designed for you — choose your lens</p>
+      <div class="audience-tabs" role="tablist">
+        <button class="aud-tab active" data-panel="grantmaker" role="tab" aria-selected="true">Grantmakers</button>
+        <button class="aud-tab" data-panel="nonprofit" role="tab" aria-selected="false">Nonprofits</button>
+        <button class="aud-tab" data-panel="association" role="tab" aria-selected="false">Associations</button>
+      </div>
+    </div>
+
+    <div class="selector-card-body">
+
+      <!-- GRANTMAKER PANEL -->
+      <div class="aud-panel visible" id="panel-grantmaker">
+        <h2 class="panel-headline">Make better grantmaking decisions with<br><em>coordinated community insight.</em></h2>
+        <p class="panel-lede">Foundations already collect feedback — but it's often fragmented, one-off, and difficult to act on. This session introduces an ecosystem-level approach so you and your partners can generate meaningful insight without adding burden.</p>
+        <p class="section-eyebrow" style="margin-bottom: 14px;">You'll learn how Matter of Voice can help</p>
+        <ul class="learn-list">
+          <li>Coordinate qualitative insight across grantees and partners</li>
+          <li>Capture lived experience at scale without increasing reporting burden</li>
+          <li>Turn stories into actionable themes for decision-making</li>
+          <li>Apply this approach across convenings, evaluations, and strategy</li>
+        </ul>
+      </div>
+
+      <!-- NONPROFIT PANEL -->
+      <div class="aud-panel" id="panel-nonprofit">
+        <h2 class="panel-headline">Turn community voice into<br><em>influence, funding, and stronger programs.</em></h2>
+        <p class="panel-lede">Nonprofits are closest to the communities they serve — but the full depth of that experience is often hard to capture, scale, and communicate in ways that drive funding, influence policy, and improve programs.</p>
+        <p class="section-eyebrow" style="margin-bottom: 14px;">You'll learn how Matter of Voice can help</p>
+        <ul class="learn-list">
+          <li>Amplify community voice at scale to support advocacy and policy change</li>
+          <li>Build more compelling funding narratives grounded in lived experience</li>
+          <li>Create shared infrastructure for story collection across partners</li>
+          <li>Gather actionable feedback to improve program design and adoption</li>
+        </ul>
+      </div>
+
+      <!-- ASSOCIATION PANEL -->
+      <div class="aud-panel" id="panel-association">
+        <h2 class="panel-headline">Turn network voice into shared insight and<br><em>influence across your entire ecosystem.</em></h2>
+        <p class="panel-lede">Associations sit at the center of powerful networks — but much of the insight across chapters, members, and partners remains siloed, underutilized, or difficult to act on.</p>
+        <p class="section-eyebrow" style="margin-bottom: 14px;">You'll learn how Matter of Voice can help</p>
+        <ul class="learn-list">
+          <li>Enhance traditional surveys with qualitative insight that surfaces blind spots</li>
+          <li>Equip chapters with shared intelligence to assess local needs and apply what's working elsewhere</li>
+          <li>Amplify network voice at scale to support advocacy and policy influence</li>
+          <li>Coordinate insight across your network — not just at headquarters</li>
+        </ul>
+      </div>
+
+    </div><!-- /selector-card-body -->
+
+    <!-- HOSTS — shared across all audience panels -->
+    <div class="selector-hosts">
+      <p class="section-eyebrow">Your hosts</p>
+      <div class="selector-hosts-row">
+        <div class="selector-host">
+          <div class="edc-avatar ts">T</div>
+          <div>
+            <div class="edc-presenter-name" style="color:var(--text);">Tim Sweeney</div>
+            <div class="edc-presenter-role" style="color:var(--muted);">Matter of Voice</div>
+          </div>
+        </div>
+        <div class="selector-host">
+          <div class="edc-avatar my">M</div>
+          <div>
+            <div class="edc-presenter-name" style="color:var(--text);">Melissa Young</div>
+            <div class="edc-presenter-role" style="color:var(--muted);">Matter of Voice</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /selector-card -->
+
+  <!-- RIGHT COLUMN (1/3): Event details + Registration — driven by JS config -->
+  <aside class="reg-col">
+
+    <!-- Event details card — compact -->
+    <div class="event-details-card">
+      <div class="edc-free">Free Webinar</div>
+      <div class="edc-title" id="edc-title"><!-- populated by JS --></div>
+      <div class="edc-meta-compact">
+        <span class="edc-meta-pill">
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="10" rx="1.2" stroke="white" stroke-opacity="0.6" stroke-width="1.1"/><path d="M4 1.5V3.5M10 1.5V3.5M1.5 6H12.5" stroke="white" stroke-opacity="0.6" stroke-width="1.1" stroke-linecap="round"/></svg>
+          <span id="edc-date"></span>
+        </span>
+        <span class="edc-meta-sep">&middot;</span>
+        <span class="edc-meta-pill">
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="white" stroke-opacity="0.6" stroke-width="1.1"/><path d="M7 4.5V7.5L9 9" stroke="white" stroke-opacity="0.6" stroke-width="1.1" stroke-linecap="round"/></svg>
+          <span id="edc-time"></span>
+        </span>
+        <span class="edc-meta-sep">&middot;</span>
+        <span class="edc-meta-pill">Zoom</span>
+      </div>
+    </div>
+
+    <!-- Registration card -->
+    <div class="reg-card">
+      <div class="reg-card-inner-header">
+        <span class="reg-card-inner-label">Reserve your seat</span>
+      </div>
+
+      <div class="reg-card-body" id="reg-form-wrap">
+        <div class="reg-field">
+          <label class="reg-label" for="reg-name">Full name</label>
+          <input class="reg-input" type="text" id="reg-name" placeholder="Jane Smith" autocomplete="name">
+        </div>
+        <div class="reg-field">
+          <label class="reg-label" for="reg-email">Work email</label>
+          <input class="reg-input" type="email" id="reg-email" placeholder="jane@organization.org" autocomplete="email">
+        </div>
+        <div class="reg-field">
+          <label class="reg-label" for="reg-org">Organization</label>
+          <input class="reg-input" type="text" id="reg-org" placeholder="Foundation / Nonprofit / Association" autocomplete="organization">
+        </div>
+
+        <!-- Zoom embed placeholder — swapped per audience -->
+        <div class="zoom-placeholder" id="zoom-embed">
+          <!-- populated by JS with audience-specific Zoom widget/link -->
+        </div>
+
+        <button class="reg-submit" id="reg-btn" onclick="handleSubmit()">Register for Free &rarr;</button>
+        <p class="reg-privacy">No spam, ever. You'll receive a Zoom confirmation with calendar invite and event reminders only.</p>
+      </div>
+
+      <div class="reg-success" id="reg-success">
+        <div class="reg-success-icon">✓</div>
+        <h4>You're registered!</h4>
+        <p>Check your inbox for a Zoom confirmation with your personal join link and calendar invite.</p>
+      </div>
+    </div>
+
+  </aside>
+
+</div><!-- /page-body -->
+
+<!-- PROOF SECTION -->
+<section class="platform-section">
+  <div class="platform-section-inner">
+
+    <!-- Header row: heading + CTA -->
+    <div class="platform-section-header">
+      <h2>The only platform built to empower your partner ecosystem with <em>community voice.</em></h2>
+      <a href="https://www.matterofvoice.com" class="platform-link" target="_blank">Learn more at matterofvoice.com &rarr;</a>
+    </div>
+
+    <!-- Four feature cards -->
+    <div class="platform-cards">
+      <div class="pc">
+        <div class="pc-title">Include more voices with less staff burden</div>
+        <div class="pc-desc">Mobile-first story capture lets participants share in their own words — anonymously if preferred — without adding reporting burden to your team or your partners.</div>
+      </div>
+      <div class="pc">
+        <div class="pc-title">Unite partners by sharing stories</div>
+        <div class="pc-desc">Shared story access across your grantee, member, or chapter network builds collective understanding and reduces duplicated listening effort across the ecosystem.</div>
+      </div>
+      <div class="pc">
+        <div class="pc-title">Reveal new insights that everyone can use</div>
+        <div class="pc-desc">AI-assisted theme analysis surfaces patterns across hundreds of stories at data-scale — turning qualitative experience into findings that support decisions at every level.</div>
+      </div>
+      <div class="pc">
+        <div class="pc-title">Create your own community panels</div>
+        <div class="pc-desc">Build ongoing community advisory panels that give a sustained voice to the people closest to your mission — and make that perspective available across your entire network.</div>
+      </div>
+    </div>
+
+    <!-- Product showcase -->
+    <div class="product-showcase">
+      <div class="ps-eyebrow">See it in action</div>
+
+      <div class="ps-grid">
+
+        <!-- Main: dashboard/analysis view -->
+        <div class="ps-main">
+          <div class="ps-img-wrap ps-img-desktop">
+            <img
+              src="https://images.squarespace-cdn.com/content/68e698bf75ec1f7f1c7230de/2c6f9937-0ae2-479e-ba66-8a8ce954ffb1/product-social.png?content-type=image%2Fpng"
+              alt="Matter of Voice platform — story collection and analysis dashboard"
+              loading="lazy"
+            >
+          </div>
+          <div class="ps-caption">
+            <strong>Ecosystem-level analysis</strong>
+            Stories collected across all partners surface in a shared dashboard — filterable by theme, location, demographic, and partner.
+          </div>
+        </div>
+
+        <!-- Right stack: report + phone -->
+        <div class="ps-stack">
+
+          <div class="ps-secondary">
+            <div class="ps-img-wrap ps-img-report">
+              <img
+                src="https://images.squarespace-cdn.com/content/68e698bf75ec1f7f1c7230de/e380bd7f-1400-4c7d-a800-25af9c4001c3/report.png?content-type=image%2Fpng"
+                alt="Matter of Voice — insight report output"
+                loading="lazy"
+              >
+            </div>
+            <div class="ps-caption">
+              <strong>Actionable reports</strong>
+              Themes and findings export directly into shareable formats your team can act on.
+            </div>
+          </div>
+
+          <div class="ps-secondary">
+            <div class="ps-img-wrap ps-img-phone">
+              <img
+                src="https://images.squarespace-cdn.com/content/68e698bf75ec1f7f1c7230de/68b62ab2-6d66-4d49-a35d-ae5ef44a9aba/phone+screen_hand.png?content-type=image%2Fpng"
+                alt="Matter of Voice — mobile story submission"
+                loading="lazy"
+              >
+            </div>
+            <div class="ps-caption">
+              <strong>Mobile-first collection</strong>
+              Community members share stories from any device — no app download required.
+            </div>
+          </div>
+
+        </div><!-- /ps-stack -->
+
+      </div><!-- /ps-grid -->
+    </div><!-- /product-showcase -->
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2028 Matter of Voice &nbsp;&middot;&nbsp; <a href="https://www.matterofvoice.com">matterofvoice.com</a></p>
+</footer>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+//  WEBINAR CONFIGURATION
+//  Edit this object to update dates, times, and Zoom links
+//  for each audience without touching any other code.
+//
+//  zoomEmbedHTML: paste your Zoom registration widget iframe
+//    or button embed here when ready. The placeholder string
+//    renders a styled stand-in until then.
+//
+//  Hash routing: the page reads window.location.hash on load
+//  and activates the matching audience automatically.
+//  Supported hashes: #grantmaker, #nonprofit, #association
+//  Example URL: /webinar#nonprofit
+// ══════════════════════════════════════════════════════════════
+const WEBINAR_CONFIG = {
+  grantmaker: {
+    title:       'Better Grantmaking Through Coordinated Community Insight',
+    date:        'PLACEHOLDER — Date TBD',
+    time:        'PLACEHOLDER — Time TBD',
+    zoomEmbedHTML: null, // paste Zoom iframe/embed string here
+    zoomLink:    '#',    // fallback direct registration URL
+  },
+  nonprofit: {
+    title:       'Turn Community Voice into Influence, Funding, and Stronger Programs',
+    date:        'PLACEHOLDER — Date TBD',
+    time:        'PLACEHOLDER — Time TBD',
+    zoomEmbedHTML: null,
+    zoomLink:    '#',
+  },
+  association: {
+    title:       'Turn Network Voice into Shared Insight Across Your Entire Ecosystem',
+    date:        'PLACEHOLDER — Date TBD',
+    time:        'PLACEHOLDER — Time TBD',
+    zoomEmbedHTML: null,
+    zoomLink:    '#',
+  }
+};
+
+// ── DOM refs ──
+const tabs      = document.querySelectorAll('.aud-tab');
+const panels    = document.querySelectorAll('.aud-panel');
+const edcTitle  = document.getElementById('edc-title');
+const edcDate   = document.getElementById('edc-date');
+const edcTime   = document.getElementById('edc-time');
+const zoomEmbed = document.getElementById('zoom-embed');
+
+// ── Zoom embed renderer ──
+function renderZoom(audience) {
+  const cfg = WEBINAR_CONFIG[audience];
+  if (cfg.zoomEmbedHTML) {
+    zoomEmbed.innerHTML = cfg.zoomEmbedHTML;
+  } else {
+    zoomEmbed.innerHTML = `
+      <strong>Zoom Registration</strong>
+      <span style="display:block;margin-top:4px;">
+        Zoom link for <em>${audience}</em> webinar to be wired in.
+        <br>
+        <a href="${cfg.zoomLink}" target="_blank" rel="noopener"
+           style="color:var(--navy);font-weight:600;">
+          Direct registration link &rarr;
+        </a>
+      </span>`;
+  }
+}
+
+// ── Right-column update ──
+function updateRightCol(audience) {
+  const cfg = WEBINAR_CONFIG[audience];
+
+  // Animate the swap
+  [edcTitle, edcDate, edcTime, zoomEmbed].forEach(el => {
+    el.style.transition = 'opacity 0.2s';
+    el.style.opacity = '0';
+  });
+
+  setTimeout(() => {
+    edcTitle.textContent = cfg.title;
+    edcDate.textContent  = cfg.date;
+    edcTime.textContent  = cfg.time;
+    renderZoom(audience);
+
+    [edcTitle, edcDate, edcTime, zoomEmbed].forEach(el => {
+      el.style.opacity = '1';
+    });
+  }, 200);
+}
+
+// ── Core switch function ──
+function switchAudience(audience) {
+  // Guard: fall back to grantmaker if unknown hash
+  if (!WEBINAR_CONFIG[audience]) audience = 'grantmaker';
+
+  // Tabs
+  tabs.forEach(t => {
+    const match = t.dataset.panel === audience;
+    t.classList.toggle('active', match);
+    t.setAttribute('aria-selected', match ? 'true' : 'false');
+  });
+
+  // Content panels
+  panels.forEach(p => p.classList.remove('visible'));
+  const target = document.getElementById('panel-' + audience);
+  if (target) target.classList.add('visible');
+
+  // Right column
+  updateRightCol(audience);
+
+  // Update hash without pushing a new history entry
+  history.replaceState(null, '', '#' + audience);
+}
+
+// ── Tab click handlers ──
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => switchAudience(tab.dataset.panel));
+});
+
+// ── Hash routing on load ──
+// Normalizes slug variants: #non-profit, #nonprofit, #Nonprofit all work
+function resolveHash(raw) {
+  const slug = (raw || '').replace(/^#/, '').toLowerCase().replace(/-/g, '');
+  if (slug === 'nonprofit' || slug === 'nonprofits') return 'nonprofit';
+  if (slug === 'association' || slug === 'associations') return 'association';
+  if (slug === 'grantmaker' || slug === 'grantmakers') return 'grantmaker';
+  return null;
+}
+
+(function init() {
+  const fromHash = resolveHash(window.location.hash);
+  switchAudience(fromHash || 'grantmaker');
+})();
+
+// Also respond if the hash changes without a page reload
+// (e.g. user navigates back/forward)
+window.addEventListener('hashchange', () => {
+  const audience = resolveHash(window.location.hash);
+  if (audience) switchAudience(audience);
+});
+
+// ── Form submit (placeholder — wire to Zoom API or redirect) ──
+function handleSubmit() {
+  const name  = document.getElementById('reg-name').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const emailInput = document.getElementById('reg-email');
+
+  if (!name || !email) {
+    emailInput.style.borderColor = '#ec3b93';
+    emailInput.focus();
+    return;
+  }
+  emailInput.style.borderColor = '';
+
+  // TODO: submit to Zoom registration API for active audience
+  // const audience = resolveHash(window.location.hash) || 'grantmaker';
+  // const zoomLink = WEBINAR_CONFIG[audience].zoomLink;
+  document.getElementById('reg-form-wrap').style.display = 'none';
+  document.getElementById('reg-success').classList.add('visible');
+}
+</script>
+
+</body>
+</html>
