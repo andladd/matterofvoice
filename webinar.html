@@ -151,11 +151,37 @@ body {
 .page-body {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 56px 40px;
+  padding: 40px 40px 56px;
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 40px;
   align-items: start;
+}
+
+/* ── SELECTOR BELT — full bleed decision layer ── */
+.selector-belt {
+  background: white;
+  border-top: 1px solid var(--rule);
+  border-bottom: 3px solid var(--rule);
+  box-shadow: 0 4px 20px rgba(51,51,101,0.07);
+  position: relative;
+  z-index: 10;
+}
+
+.selector-belt-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 28px 40px 32px;
+  text-align: center;
+}
+
+.selector-belt-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
 }
 
 /* ── SELECTOR CARD (left 2/3) ── */
@@ -164,13 +190,6 @@ body {
   border: 1px solid var(--rule);
   border-radius: 12px;
   overflow: hidden;
-}
-
-.selector-card-header {
-  background: var(--off-white);
-  border-bottom: 1px solid var(--rule);
-  padding: 28px 32px 28px;
-  text-align: center;
 }
 
 .selector-card-body {
@@ -190,7 +209,7 @@ body {
 
 .audience-tabs {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
   width: 80%;
   margin: 0 auto;
@@ -198,10 +217,10 @@ body {
 
 .aud-tab {
   flex: 1;
-  padding: 14px 16px;
+  padding: 16px 20px;
   border-radius: 8px;
   border: 2px solid transparent;
-  background: white;
+  background: var(--off-white);
   font-family: var(--sans);
   font-weight: 600;
   font-size: 14px;
@@ -210,9 +229,8 @@ body {
   outline: none;
   line-height: 1.2;
   position: relative;
-  /* default unselected state */
   color: var(--muted);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 
 /* Color-coded hover states */
@@ -933,6 +951,7 @@ footer a {
   .hero { padding: 48px 24px 40px; }
   .hero h1 { font-size: 1.9rem; }
   .selector-card-header, .selector-card-body { padding: 20px; }
+  .selector-belt-inner { padding: 24px 20px 28px; }
   .audience-tabs {
     width: 100%;
     flex-direction: column;
@@ -979,28 +998,32 @@ footer a {
 
 </section>
 
+<!-- SELECTOR BELT — full bleed decision layer -->
+<div class="selector-belt">
+  <div class="selector-belt-inner">
+    <p class="selector-belt-eyebrow">This webinar is designed for you — choose your lens</p>
+    <div class="audience-tabs" role="tablist">
+      <button class="aud-tab active" data-panel="grantmaker" role="tab" aria-selected="true">
+        <span class="aud-tab-label">Grantmakers</span>
+        <span class="aud-tab-sub">Foundations &amp; funders</span>
+      </button>
+      <button class="aud-tab" data-panel="nonprofit" role="tab" aria-selected="false">
+        <span class="aud-tab-label">Nonprofits</span>
+        <span class="aud-tab-sub">Mission-driven orgs</span>
+      </button>
+      <button class="aud-tab" data-panel="association" role="tab" aria-selected="false">
+        <span class="aud-tab-label">Associations</span>
+        <span class="aud-tab-sub">Networks &amp; chapters</span>
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- PAGE BODY -->
 <div class="page-body">
 
   <!-- LEFT: SELECTOR CARD (2/3) -->
   <div class="selector-card">
-    <div class="selector-card-header">
-      <p class="section-eyebrow" style="margin-bottom: 12px;">This webinar is designed for you — choose your lens</p>
-      <div class="audience-tabs" role="tablist">
-        <button class="aud-tab active" data-panel="grantmaker" role="tab" aria-selected="true">
-          <span class="aud-tab-label">Grantmakers</span>
-          <span class="aud-tab-sub">Foundations &amp; funders</span>
-        </button>
-        <button class="aud-tab" data-panel="nonprofit" role="tab" aria-selected="false">
-          <span class="aud-tab-label">Nonprofits</span>
-          <span class="aud-tab-sub">Mission-driven orgs</span>
-        </button>
-        <button class="aud-tab" data-panel="association" role="tab" aria-selected="false">
-          <span class="aud-tab-label">Associations</span>
-          <span class="aud-tab-sub">Networks &amp; chapters</span>
-        </button>
-      </div>
-    </div>
 
     <div class="selector-card-body">
 
