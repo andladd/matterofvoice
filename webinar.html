@@ -475,6 +475,16 @@ body {
 .selector-hosts .edc-avatar.ts { background: var(--navy); }
 .selector-hosts .edc-avatar.my { background: var(--teal); }
 
+.host-photo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+  border: 2px solid var(--rule);
+}
+
 .edc-avatar {
   width: 36px;
   height: 36px;
@@ -1076,14 +1086,14 @@ footer a {
       <p class="section-eyebrow">Your hosts</p>
       <div class="selector-hosts-row">
         <div class="selector-host">
-          <div class="edc-avatar ts">T</div>
+          <img class="host-photo" src="https://images.squarespace-cdn.com/content/68e698bf75ec1f7f1c7230de/83165d22-291e-4408-bc43-e5a11829cfe2/tim_sweeney.jpeg?content-type=image%2Fjpeg" alt="Tim Sweeney">
           <div>
             <div class="edc-presenter-name" style="color:var(--text);">Tim Sweeney</div>
             <div class="edc-presenter-role" style="color:var(--muted);">Matter of Voice</div>
           </div>
         </div>
         <div class="selector-host">
-          <div class="edc-avatar my">M</div>
+          <img class="host-photo" src="https://images.squarespace-cdn.com/content/68e698bf75ec1f7f1c7230de/ff9cb328-dc73-4df8-ac07-6f5e441ba98a/melissa_young.jpeg?content-type=image%2Fjpeg" alt="Melissa Young">
           <div>
             <div class="edc-presenter-name" style="color:var(--text);">Melissa Young</div>
             <div class="edc-presenter-role" style="color:var(--muted);">Matter of Voice</div>
