@@ -1132,33 +1132,10 @@ footer a {
       </div>
 
       <div class="reg-card-body" id="reg-form-wrap">
-        <div class="reg-field">
-          <label class="reg-label" for="reg-name">Full name</label>
-          <input class="reg-input" type="text" id="reg-name" placeholder="Jane Smith" autocomplete="name">
-        </div>
-        <div class="reg-field">
-          <label class="reg-label" for="reg-email">Work email</label>
-          <input class="reg-input" type="email" id="reg-email" placeholder="jane@organization.org" autocomplete="email">
-        </div>
-        <div class="reg-field">
-          <label class="reg-label" for="reg-org">Organization</label>
-          <input class="reg-input" type="text" id="reg-org" placeholder="Foundation / Nonprofit / Association" autocomplete="organization">
-        </div>
-
-        <!-- Zoom embed placeholder — swapped per audience -->
-        <div class="zoom-placeholder" id="zoom-embed">
-          <!-- populated by JS with audience-specific Zoom widget/link -->
-        </div>
-
-        <button class="reg-submit" id="reg-btn" onclick="handleSubmit()">Register for Free &rarr;</button>
-        <p class="reg-privacy">No spam, ever. You'll receive a Zoom confirmation with calendar invite and event reminders only.</p>
+        <!-- Zoom registration iframe — swapped per audience by JS -->
+        <div id="zoom-embed"></div>
       </div>
 
-      <div class="reg-success" id="reg-success">
-        <div class="reg-success-icon">✓</div>
-        <h4>You're registered!</h4>
-        <p>Check your inbox for a Zoom confirmation with your personal join link and calendar invite.</p>
-      </div>
     </div>
 
   </aside>
@@ -1274,25 +1251,25 @@ footer a {
 // ══════════════════════════════════════════════════════════════
 const WEBINAR_CONFIG = {
   grantmaker: {
-    title:       'Better Grantmaking Through Coordinated Community Insight',
-    date:        'PLACEHOLDER — Date TBD',
-    time:        'PLACEHOLDER — Time TBD',
-    zoomEmbedHTML: null, // paste Zoom iframe/embed string here
-    zoomLink:    '#',    // fallback direct registration URL
+    title:         'Better Grantmaking Through Coordinated Community Insight',
+    date:          'May 26, 2026',
+    time:          '12:00 PM CDT / 1:00 PM EDT',
+    zoomEmbedHTML: `<iframe src="https://events.zoom.us/ev/AuB_IWBo31o8aZH6Wi4XyhwdLtrGemmU9RE85_uctx6pNYqpzxSe~Al5ePSqZ3VLbBF44AMWeX3beM19EvkX-GfdebX7GiYXHXKYMgdqcZMRkQg" width="100%" height="480px" frameborder="0" style="border:none;border-radius:6px;"></iframe>`,
+    zoomLink:      'https://events.zoom.us/ev/AuB_IWBo31o8aZH6Wi4XyhwdLtrGemmU9RE85_uctx6pNYqpzxSe~Al5ePSqZ3VLbBF44AMWeX3beM19EvkX-GfdebX7GiYXHXKYMgdqcZMRkQg',
   },
   nonprofit: {
-    title:       'Turn Community Voice into Influence, Funding, and Stronger Programs',
-    date:        'PLACEHOLDER — Date TBD',
-    time:        'PLACEHOLDER — Time TBD',
-    zoomEmbedHTML: null,
-    zoomLink:    '#',
+    title:         'Turn Community Voice into Influence, Funding, and Stronger Programs',
+    date:          'May 27, 2026',
+    time:          '12:00 PM CDT / 1:00 PM EDT',
+    zoomEmbedHTML: `<iframe src="https://events.zoom.us/ev/AnwHTePJC4vkTbP8IvZNSmKEvvPk4mzuwSfUBZipnwFRu1Tt0IE8~ArMQuc2u8EDqGBoDgpNvpuA1lw_EcRwtTXbLXVPlZFuFq7RcuY0qHjy57w" width="100%" height="480px" frameborder="0" style="border:none;border-radius:6px;"></iframe>`,
+    zoomLink:      'https://events.zoom.us/ev/AnwHTePJC4vkTbP8IvZNSmKEvvPk4mzuwSfUBZipnwFRu1Tt0IE8~ArMQuc2u8EDqGBoDgpNvpuA1lw_EcRwtTXbLXVPlZFuFq7RcuY0qHjy57w',
   },
   association: {
-    title:       'Turn Network Voice into Shared Insight Across Your Entire Ecosystem',
-    date:        'PLACEHOLDER — Date TBD',
-    time:        'PLACEHOLDER — Time TBD',
-    zoomEmbedHTML: null,
-    zoomLink:    '#',
+    title:         'Turn Network Voice into Shared Insight Across Your Entire Ecosystem',
+    date:          'May 28, 2026',
+    time:          '12:00 PM CDT / 1:00 PM EDT',
+    zoomEmbedHTML: `<iframe src="https://events.zoom.us/ev/AgJEnJXfRyz9cMOKuMSuEi_V2JsI3nD7E9T55clseK4olxanolVb~AiZAuDcC70lZ8dXMyFmMMYLzjhgiCAE-GLJuTJjuG53AXaI8lM9NtXx6FQ" width="100%" height="480px" frameborder="0" style="border:none;border-radius:6px;"></iframe>`,
+    zoomLink:      'https://events.zoom.us/ev/AgJEnJXfRyz9cMOKuMSuEi_V2JsI3nD7E9T55clseK4olxanolVb~AiZAuDcC70lZ8dXMyFmMMYLzjhgiCAE-GLJuTJjuG53AXaI8lM9NtXx6FQ',
   }
 };
 
@@ -1400,25 +1377,6 @@ window.addEventListener('hashchange', () => {
   if (audience) switchAudience(audience);
 });
 
-// ── Form submit (placeholder — wire to Zoom API or redirect) ──
-function handleSubmit() {
-  const name  = document.getElementById('reg-name').value.trim();
-  const email = document.getElementById('reg-email').value.trim();
-  const emailInput = document.getElementById('reg-email');
-
-  if (!name || !email) {
-    emailInput.style.borderColor = '#ec3b93';
-    emailInput.focus();
-    return;
-  }
-  emailInput.style.borderColor = '';
-
-  // TODO: submit to Zoom registration API for active audience
-  // const audience = resolveHash(window.location.hash) || 'grantmaker';
-  // const zoomLink = WEBINAR_CONFIG[audience].zoomLink;
-  document.getElementById('reg-form-wrap').style.display = 'none';
-  document.getElementById('reg-success').classList.add('visible');
-}
 </script>
 
 </body>
